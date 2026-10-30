@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f4eb;
+  --foreground: #202e1d;
+
+  /* Artisanal Earthy Palette from Reference */
+  --cream: #f6f4eb;
+  --cream-card: #fdfcf9;
+  --cream-muted: #ece8dc;
+  --sage: #9ba58c;
+  --sage-deep: #848f74;
+  --sage-light: #b4bea7;
+  --forest: #202e1d;
+  --forest-light: #344331;
+  --butter: #edd88b;
+  --butter-hover: #e5ce76;
+  --amber-accent: #c4823f;
+  --border-natural: rgba(32, 46, 29, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cream: var(--cream);
+  --color-cream-card: var(--cream-card);
+  --color-cream-muted: var(--cream-muted);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-sage-light: var(--sage-light);
+  --color-forest: var(--forest);
+  --color-butter: var(--butter);
+  --color-butter-hover: var(--butter-hover);
+  --font-serif: var(--font-serif), "Newsreader", "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar matching organic aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #ede9dc;
+}
+::-webkit-scrollbar-thumb {
+  background: #9ba58c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #848f74;
 }
