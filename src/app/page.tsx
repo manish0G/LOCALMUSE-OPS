@@ -11,12 +11,15 @@ import { APP_CONFIG } from "@/constants";
 import { LocationInsightsView } from "@/components/location-insights/LocationInsightsView";
 import { AudienceComparisonView } from "@/components/audience-comparison/AudienceComparisonView";
 import { LocalTrendsView } from "@/components/local-trends/LocalTrendsView";
+import { CulturePlanView } from "@/components/culture-plan/CulturePlanView";
 
 export default function Home() {
   const [activeNav, setActiveNav] = useState("overview");
 
   const getShellTitle = () => {
     switch (activeNav) {
+      case "culture-plan":
+        return "Weekly Culture Plan Copilot";
       case "location-insights":
         return "Location Insights";
       case "compare-audiences":
@@ -30,6 +33,8 @@ export default function Home() {
 
   const getShellDescription = () => {
     switch (activeNav) {
+      case "culture-plan":
+        return "Agentic weekly operating rhythm, Qloo vs Generic mode benchmark & feedback memory";
       case "location-insights":
         return "Taste-powered peer anchors and cultural concept indexing for local enterprises";
       case "compare-audiences":
@@ -48,7 +53,9 @@ export default function Home() {
       title={getShellTitle()}
       description={getShellDescription()}
     >
-      {activeNav === "location-insights" ? (
+      {activeNav === "culture-plan" ? (
+        <CulturePlanView />
+      ) : activeNav === "location-insights" ? (
         <LocationInsightsView />
       ) : activeNav === "compare-audiences" ? (
         <AudienceComparisonView />
@@ -119,12 +126,39 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Flagship Module 05: Weekly Culture Plan Copilot */}
+          <div className="rounded-2xl border border-indigo-500/40 bg-gradient-to-r from-indigo-950/50 via-zinc-900/60 to-zinc-900/80 p-6 sm:p-7 relative overflow-hidden space-y-4">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="space-y-2 max-w-2xl">
+                <div className="flex items-center gap-2">
+                  <Badge variant="info" size="sm">Flagship Module &bull; Agentic Copilot</Badge>
+                  <span className="text-xs text-indigo-300 font-mono">Qloo vs Generic Benchmark</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-zinc-100">
+                  Weekly Culture Plan Copilot
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                  Synthesize an actionable 6-pillar operational operating rhythm (specials, soundscapes, programming, partnerships, visual merchandising, localized copy). Includes side-by-side generic LLM comparison and staff feedback memory loop.
+                </p>
+              </div>
+
+              <Button
+                variant="primary"
+                size="md"
+                onClick={() => setActiveNav("culture-plan")}
+                className="shrink-0 px-5 shadow-lg shadow-indigo-500/20"
+              >
+                Launch Culture Plan Copilot →
+              </Button>
+            </div>
+          </div>
+
           {/* The Four Core Workflows Section */}
           <div className="space-y-5">
             <SectionHeader
               badge={<Badge variant="neutral" size="sm">Core Architecture</Badge>}
               title="Operational Workflows"
-              description="Four high-impact decision modules bridging Qloo's cultural AI tools with small-business operational questions."
+              description="Underlying Qloo cultural AI modules powering the weekly operations engine."
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

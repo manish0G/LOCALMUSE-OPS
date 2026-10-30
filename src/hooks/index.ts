@@ -7,5 +7,6 @@ export * from "./useLocationInsights";
 export * from "./useCompareAudiences";
 export * from "./useLocalTrends";
 export * from "./useRecommendations";
+export * from "./useCulturePlan";
 export * from "./useBackendHealth";
 export * from "./useOperationMode";

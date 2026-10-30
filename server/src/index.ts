@@ -58,7 +58,8 @@ app.get("/", (_req, res) => {
       locationInsights: "POST /api/location-insights",
       compareAudiences: "POST /api/compare-audiences",
       localTrends: "POST /api/local-trends",
-      recommendations: "POST /api/recommendations"
+      recommendations: "POST /api/recommendations",
+      culturePlan: "POST /api/plan"
     }
   });
 });

@@ -28,6 +28,13 @@ export const NAV_ITEMS: NavItem[] = [
     description: "System overview, active mode, and workflow index"
   },
   {
+    id: "culture-plan",
+    label: "Weekly Culture Plan",
+    href: "/culture-plan",
+    description: "Agentic weekly action plan, Qloo vs Generic mode & memory",
+    badge: "Copilot"
+  },
+  {
     id: "location-insights",
     label: "Location Insights",
     href: "/location-insights",

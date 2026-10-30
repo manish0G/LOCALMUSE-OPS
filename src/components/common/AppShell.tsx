@@ -41,6 +41,7 @@ function AppShellInner({
       return;
     }
     if (id === "overview") router.push("/");
+    else if (id === "culture-plan") router.push("/culture-plan");
     else if (id === "location-insights") router.push("/location-insights");
     else if (id === "compare-audiences") router.push("/audience-comparison");
     else if (id === "local-trends") router.push("/local-trends");

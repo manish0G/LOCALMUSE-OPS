@@ -325,3 +325,93 @@ export interface BackendHealthResponse {
   error?: string;
   hint?: string;
 }
+
+// ---------------------------------------------------------------------------
+// 8. Weekly Culture Plan & Comparative Agent Domain Types
+// ---------------------------------------------------------------------------
+
+export interface CulturePlanSignal {
+  signalType: "location_anchor" | "concept_tag" | "trend_momentum" | "cross_domain_affinity" | "audience_contrast";
+  citation: string;
+  scoreOrPrevalence?: string | number;
+  explanation: string;
+}
+
+export interface CulturePlanPillar {
+  id: string;
+  category: "specials" | "playlist" | "events" | "partnerships" | "merchandising" | "marketing";
+  title: string;
+  subtitle: string;
+  description: string;
+  actionItems: string[];
+  timing: string;
+  projectedImpact: string;
+  qlooSignals: CulturePlanSignal[];
+}
+
+export interface ComparativeScoreMetric {
+  metric: string;
+  qlooScore: number;
+  genericScore: number;
+  advantageAnalysis: string;
+}
+
+export interface CulturePlanData {
+  business: {
+    name: string;
+    type: string;
+    location: string;
+    neighborhood: string;
+    style: string;
+    priceBand: string;
+    targetCustomer: string;
+    goal: string;
+  };
+  generatedWeek: string;
+  qlooPlan: {
+    executiveSummary: string;
+    strategicThesis: string;
+    pillars: CulturePlanPillar[];
+    demographicFocus: {
+      primaryBracket: string;
+      subcultures: string[];
+      topAffinities: string[];
+    };
+  };
+  genericPlan: {
+    executiveSummary: string;
+    strategicThesis: string;
+    pillars: Array<{
+      category: string;
+      title: string;
+      description: string;
+      critique: string;
+    }>;
+  };
+  comparativeScores: ComparativeScoreMetric[];
+  feedbackMemory?: {
+    tagsApplied: string[];
+    customNotes?: string;
+    iterationCount: number;
+    agentMemoryLog: string[];
+  };
+  assumptions: string[];
+  responsibleAiLimitations: string[];
+}
+
+export interface CulturePlanRequest {
+  mode: OperationMode;
+  businessName?: string;
+  businessType: string;
+  location: string;
+  neighborhood?: string;
+  style?: string;
+  priceBand?: string;
+  targetCustomer?: string;
+  goal: string;
+  feedback?: {
+    tags?: string[];
+    notes?: string;
+    iteration?: number;
+  };
+}

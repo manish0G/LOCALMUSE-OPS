@@ -3,10 +3,12 @@ import type {
   CompareAudiencesRequest,
   LocalTrendsRequest,
   RecommendationsRequest,
+  CulturePlanRequest,
   LocationInsightsData,
   AudienceComparisonData,
   LocalTrendsData,
   RecommendationsData,
+  CulturePlanData,
   QlooMcpEnvelope,
   BackendHealthResponse
 } from "@/types";
@@ -166,6 +168,21 @@ export async function fetchRecommendations(
 }
 
 /**
+ * Requests an end-to-end Weekly Culture Plan with Qloo provenance citations,
+ * comparative generic LLM baseline, and staff feedback memory.
+ */
+export async function fetchCulturePlan(
+  params: CulturePlanRequest,
+  signal?: AbortSignal
+): Promise<QlooMcpEnvelope<CulturePlanData>> {
+  return fetchJson<QlooMcpEnvelope<CulturePlanData>>("/api/plan", {
+    method: "POST",
+    body: JSON.stringify(params),
+    signal
+  });
+}
+
+/**
  * Client object bundling all API methods for convenient single-import usage.
  */
 export const apiClient = {
@@ -173,5 +190,6 @@ export const apiClient = {
   getLocationInsights: fetchLocationInsights,
   compareAudiences: fetchCompareAudiences,
   getLocalTrends: fetchLocalTrends,
-  getRecommendations: fetchRecommendations
+  getRecommendations: fetchRecommendations,
+  getCulturePlan: fetchCulturePlan
 };
