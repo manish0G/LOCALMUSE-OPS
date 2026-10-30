@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   description: APP_CONFIG.description,
 };
 
+import { AuthProvider } from "@/lib/AuthContext";
+import { SmoothScrollProvider } from "@/components/common/SmoothScrollProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,7 +40,11 @@ export default function RootLayout({
       lang="en"
       className={`${serifFont.variable} ${sansFont.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <AuthProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

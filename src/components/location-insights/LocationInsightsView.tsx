@@ -108,7 +108,7 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
     error?.message?.includes("401");
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 pb-12">
+    <div className="max-w-6xl mx-auto space-y-8 pb-12 text-[#202E1D]">
       {/* View Header */}
       <SectionHeader
         badge={
@@ -124,34 +124,34 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
         title="Location Insights"
         description="Discover cultural peer anchors, taste concept tags, and demographic indexing for any local enterprise."
         action={
-          <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 p-1 rounded-lg">
+          <div className="flex items-center gap-1.5 bg-white border border-[#202E1D]/15 p-1 rounded-full shadow-2xs">
             <button
               type="button"
               onClick={() => setMode("demo")}
               className={cn(
-                "px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer flex items-center gap-1.5",
+                "px-3 py-1 text-xs font-medium rounded-full transition-all cursor-pointer flex items-center gap-1.5",
                 mode === "demo"
-                  ? "bg-amber-500/20 text-amber-200 border border-amber-500/30 shadow-xs"
-                  : "text-zinc-400 hover:text-zinc-200"
+                  ? "bg-[#EDD88B] text-[#202E1D] font-bold shadow-2xs"
+                  : "text-[#202E1D]/70 hover:text-[#202E1D]"
               )}
             >
-              <span className={cn("w-1.5 h-1.5 rounded-full", mode === "demo" ? "bg-amber-400" : "bg-zinc-500")} />
+              <span className={cn("w-1.5 h-1.5 rounded-full", mode === "demo" ? "bg-[#202E1D]" : "bg-zinc-400")} />
               Demo Mode
             </button>
             <button
               type="button"
               onClick={() => setMode("live")}
               className={cn(
-                "px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer flex items-center gap-1.5",
+                "px-3 py-1 text-xs font-medium rounded-full transition-all cursor-pointer flex items-center gap-1.5",
                 mode === "live"
-                  ? "bg-emerald-500/20 text-emerald-200 border border-emerald-500/30 shadow-xs"
-                  : "text-zinc-400 hover:text-zinc-200"
+                  ? "bg-[#202E1D] text-white font-bold shadow-2xs"
+                  : "text-[#202E1D]/70 hover:text-[#202E1D]"
               )}
             >
               <span
                 className={cn(
                   "w-1.5 h-1.5 rounded-full",
-                  mode === "live" ? "bg-emerald-400 animate-pulse" : "bg-zinc-500"
+                  mode === "live" ? "bg-emerald-400 animate-pulse" : "bg-zinc-400"
                 )}
               />
               Live Qloo Mode
@@ -163,49 +163,33 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
       {/* Mode Clarity Banner */}
       <div
         className={cn(
-          "rounded-xl border p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left transition-colors",
+          "rounded-2xl border p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left transition-colors shadow-2xs",
           mode === "demo"
-            ? "border-amber-500/20 bg-amber-500/5 text-amber-200"
-            : "border-emerald-500/20 bg-emerald-500/5 text-emerald-200"
+            ? "border-[#EDD88B]/60 bg-[#EDD88B]/20 text-[#202E1D]"
+            : "border-emerald-200 bg-emerald-50 text-emerald-950"
         )}
       >
         <div className="flex items-start sm:items-center gap-3">
           <div
             className={cn(
-              "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 sm:mt-0",
+              "w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 font-bold",
               mode === "demo"
-                ? "bg-amber-500/10 text-amber-400 border border-amber-500/25"
-                : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                ? "bg-[#EDD88B] text-[#202E1D]"
+                : "bg-emerald-600 text-white"
             )}
           >
-            {mode === "demo" ? (
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            )}
+            {mode === "demo" ? "✨" : "⚡"}
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider">
+              <span className="text-xs font-bold uppercase tracking-wider font-mono">
                 {mode === "demo" ? "Demo Mode Active" : "Live Qloo Mode Active"}
               </span>
               <Badge variant={mode === "demo" ? "warning" : isLiveAvailable ? "success" : "danger"} size="sm">
                 {mode === "demo" ? "Curated Austin Coffee Fixture" : isLiveAvailable ? "Qloo Connected" : "Requires Key"}
               </Badge>
             </div>
-            <p className="text-xs text-zinc-400 mt-0.5">
+            <p className="text-xs text-[#202E1D]/75 mt-0.5 font-sans">
               {mode === "demo"
                 ? "Uses curated benchmark sample datasets. Does not require an API key or make external network calls."
                 : "Executes live Qloo MCP tools (qloo_find_tags, qloo_recommend, qloo_entity_tags). Requires an event-issued QLOO_API_KEY."}
@@ -218,16 +202,16 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
             variant="ghost"
             size="sm"
             onClick={() => setMode(mode === "demo" ? "live" : "demo")}
-            className="text-xs text-zinc-300 hover:text-zinc-100"
+            className="text-xs font-semibold"
             type="button"
           >
-            Switch to {mode === "demo" ? "Live Qloo Mode" : "Demo Mode"}
+            Switch to {mode === "demo" ? "Live Qloo Mode" : "Demo Mode"} &rarr;
           </Button>
         </div>
       </div>
 
       {/* Input Parameters Form Card */}
-      <Card className="border-zinc-800/90 bg-zinc-900/60 text-left">
+      <Card>
         <CardHeader>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
@@ -236,7 +220,7 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
                 Configure your business concept and target geographic market to run cultural affinity analysis.
               </CardDescription>
             </div>
-            <Button variant="ghost" size="sm" onClick={handleLoadPreset} type="button" className="shrink-0">
+            <Button variant="outline" size="sm" onClick={handleLoadPreset} type="button" className="shrink-0 font-mono text-xs">
               Load Austin Coffee Preset
             </Button>
           </div>
@@ -244,98 +228,91 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Business Type Selector (Required) */}
-              <div className="space-y-1.5">
+              <div>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-[#202E1D]/80 mb-1.5">
+                  Business Category / Concept <span className="text-rose-600">*</span>
+                </label>
                 <Select
-                  label="Business Category / Concept * (Required)"
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
                   options={BUSINESS_TYPE_OPTIONS}
-                  helperText="Primary industry or business format to match taste profiles"
                 />
-                {selectedType === "custom" && (
-                  <Input
-                    placeholder="e.g., Specialty Matcha Bar & Roastery"
-                    value={customType}
-                    onChange={(e) => setCustomType(e.target.value)}
-                    className="mt-2"
-                  />
-                )}
               </div>
 
-              {/* City / Primary Market (Required) */}
-              <Input
-                label="City / Market * (Required)"
-                placeholder="e.g., Austin, TX"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                helperText="Geographic target locality for cultural affinity indexing"
-              />
+              {selectedType === "custom" && (
+                <div>
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-[#202E1D]/80 mb-1.5">
+                    Custom Concept Name <span className="text-rose-600">*</span>
+                  </label>
+                  <Input
+                    value={customType}
+                    onChange={(e) => setCustomType(e.target.value)}
+                    placeholder="e.g. Natural Cider House & Provisions"
+                    required
+                  />
+                </div>
+              )}
 
-              {/* Neighborhood / Micro-location (Optional) */}
-              <Input
-                label="Neighborhood / District (Optional)"
-                placeholder="e.g., East Austin (78702) or South Congress"
-                value={neighborhood}
-                onChange={(e) => setNeighborhood(e.target.value)}
-                helperText="Optional sub-locality to refine neighborhood-level clusters"
-              />
+              <div>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-[#202E1D]/80 mb-1.5">
+                  City / Market <span className="text-rose-600">*</span>
+                </label>
+                <Input
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  placeholder="e.g. Austin, TX or Brooklyn, NY"
+                  required
+                />
+              </div>
 
-              {/* Business Description / Operational Profile (Optional) */}
-              <Input
-                label="Business Description (Optional)"
-                placeholder="e.g., 35-seat craft café with patio and vinyl audio focus"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                helperText="Operational nuances (seating format, menu focus, aesthetic positioning)"
-              />
+              <div>
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-[#202E1D]/80 mb-1.5">
+                  Neighborhood / District (Optional)
+                </label>
+                <Input
+                  value={neighborhood}
+                  onChange={(e) => setNeighborhood(e.target.value)}
+                  placeholder="e.g. East Austin or Williamsburg"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-[11px] font-mono uppercase tracking-wider text-[#202E1D]/80 mb-1.5">
+                  Venue Concept &amp; Brand Character Description (Optional)
+                </label>
+                <Input
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="e.g. Specialty single-origin espresso with vintage vinyl listening corner and courtyard"
+                />
+              </div>
             </div>
 
             {/* Validation Message */}
             {validationError && (
-              <div className="p-3 rounded-lg bg-red-950/30 border border-red-500/30 text-xs text-red-300 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
+              <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 flex items-center gap-2">
+                <span>⚠</span>
                 <span>{validationError}</span>
               </div>
             )}
 
-            {/* Action Buttons */}
-            <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-zinc-800/60 mt-4">
-              <div className="text-xs text-zinc-400">
+            <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#202E1D]/10 mt-4">
+              <div className="text-xs text-[#202E1D]/70 font-sans">
                 {mode === "demo" ? (
-                  <span className="text-amber-400/90 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                    Querying curated Austin coffee demo fixtures
-                  </span>
+                  <span>Using curated benchmark fixture for Austin Eastside Coffee.</span>
                 ) : (
-                  <span className="text-emerald-400/90 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Calling live Qloo MCP server (requires QLOO_API_KEY)
-                  </span>
+                  <span>Will query live Qloo MCP tools (qloo_find_tags, qloo_recommend, qloo_entity_tags).</span>
                 )}
               </div>
 
-              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+              <div className="flex items-center gap-2">
                 {data && (
-                  <Button variant="outline" size="md" onClick={reset} type="button" disabled={loading}>
+                  <Button variant="ghost" size="sm" onClick={() => reset()} type="button">
                     Clear Results
                   </Button>
                 )}
-                <Button
-                  variant="primary"
-                  size="md"
-                  type="submit"
-                  loading={loading}
-                  disabled={loading}
-                  className="w-full sm:w-auto px-6 font-semibold"
-                >
-                  {loading
-                    ? mode === "demo"
-                      ? "Querying Demo Fixtures..."
-                      : "Querying Live Qloo Engine..."
-                    : mode === "demo"
-                      ? "Generate Demo Insights"
-                      : "Query Live Qloo Engine"}
+                <Button type="submit" variant="primary" disabled={loading} className="px-6">
+                  {loading ? "Analyzing Culture..." : "Generate Insights →"}
                 </Button>
               </div>
             </div>
@@ -343,102 +320,38 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
         </CardContent>
       </Card>
 
-      {/* Dynamic Loading State */}
+      {/* Loading State */}
       {loading && (
         <LoadingState
-          message={
-            mode === "demo"
-              ? `Evaluating curated demo fixtures for '${effectiveBusinessType}' in '${city}'...`
-              : `Executing live Qloo MCP pipeline for '${effectiveBusinessType}' in '${city}'...`
-          }
+          message={`Executing Qloo intelligence pipeline for ${effectiveBusinessType} in ${neighborhood ? `${neighborhood}, ${city}` : city}...`}
         />
       )}
 
-      {/* Error Displays */}
+      {/* Error State */}
       {error && !loading && (
-        isAuthError ? (
-          <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-5 sm:p-6 text-left space-y-4">
-            <div className="flex items-start gap-3.5">
-              <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
-                <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="space-y-1.5 flex-1">
-                <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-semibold text-amber-200">
-                    Authentication Required (QLOO_AUTH)
-                  </h4>
-                  <Badge variant="warning" size="sm">
-                    HTTP 401
-                  </Badge>
-                </div>
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                  Live Qloo queries require an event-issued API key. Configure <code className="text-amber-300 font-mono text-xs px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">QLOO_API_KEY</code> in <code className="text-amber-300 font-mono text-xs px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">server/.env</code>, or switch to Demo Mode to explore curated fixtures.
-                </p>
-                {error instanceof ApiClientError && error.message && (
-                  <p className="text-xs text-zinc-400 font-mono bg-zinc-950/60 p-2.5 rounded border border-zinc-800/80">
-                    Backend detail: {error.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-zinc-800/60">
-              <span className="text-xs text-zinc-400">
-                Switch back to Demo Mode to test full UI functionality with benchmark fixtures.
-              </span>
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => void handleSubmit()}
-                  type="button"
-                >
-                  Retry Live Query
-                </Button>
-                <Button
-                  variant="primary"
-                  size="sm"
-                  onClick={() => setMode("demo")}
-                  type="button"
-                >
-                  Switch to Demo Mode
-                </Button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <ErrorState
-            title={error instanceof ApiClientError && error.code ? `Error (${error.code})` : "Query Failed"}
-            message={error.message}
-            code={error instanceof ApiClientError ? error.code : undefined}
-            recovery={
-              error instanceof ApiClientError && error.recovery
-                ? error.recovery
-                : mode === "live"
-                ? "Ensure QLOO_API_KEY is configured in server/.env, or switch to Demo Mode to view curated sample data."
-                : "Check input arguments and retry."
-            }
-            onRetry={() => void handleSubmit()}
-          />
-        )
+        <ErrorState
+          title={isAuthError ? "Qloo Authentication Required" : "Location Intelligence Query Failed"}
+          message={error instanceof Error ? error.message : String(error)}
+          code={error instanceof ApiClientError ? error.code : undefined}
+          recovery={
+            isAuthError
+              ? "Live Qloo queries require an event-issued API key. Switch to Demo Mode above to view curated sample datasets."
+              : "Verify that the backend Express server on port 4000 is running and that the parameters are valid."
+          }
+          onRetry={handleSubmit}
+        />
       )}
 
-      {/* Results Dashboard */}
-      {data && !loading && !error && result && (
-        <div className="space-y-6">
-          {/* Explicit Demo Disclaimer Banner (Shown when in Demo Mode) */}
+      {/* Results View */}
+      {result && !loading && (
+        <div className="space-y-6 animate-in fade-in duration-300">
+          {/* Mode Attribution Alert */}
           {isDemoResponse && (
-            <div className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 text-xs text-amber-200">
+            <div className="rounded-2xl border border-[#EDD88B]/60 bg-[#EDD88B]/20 p-3.5 sm:p-4 text-xs text-[#202E1D] flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
-                <span className="font-medium">
-                  Curated Demo Mode: Showing illustrative results for product evaluation. Not official live Qloo API data.
+                <span>✨</span>
+                <span className="font-medium font-sans">
+                  Curated Demo Mode: Showing illustrative results for product evaluation. Grounded in Austin Eastside coffee taste graph.
                 </span>
               </div>
               <Badge variant="warning" size="sm">
@@ -448,12 +361,12 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
           )}
 
           {/* Overview & Provenance Card */}
-          <Card className="border-zinc-800/90 bg-zinc-900/50 text-left">
+          <Card>
             <CardHeader>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
+                    <span className="text-[10px] font-mono text-[#8F9A82] uppercase tracking-wider font-semibold">
                       Location Intelligence Summary
                     </span>
                     {isDemoResponse ? (
@@ -466,28 +379,28 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-lg sm:text-xl">
+                  <CardTitle className="text-xl sm:text-2xl">
                     {result.target_location || result.location || city} &bull; {result.business_type || result.businessType || effectiveBusinessType}
                   </CardTitle>
                 </div>
-                <div className="text-right text-xs text-zinc-400 font-mono">
-                  Status: <span className="text-emerald-400 font-semibold">{data.status}</span>
+                <div className="text-right text-xs text-[#202E1D]/60 font-mono">
+                  Status: <span className="text-emerald-700 font-semibold">{data.status}</span>
                 </div>
               </div>
-              <CardDescription className="pt-2 text-sm text-zinc-300 leading-relaxed">
+              <CardDescription className="pt-2 text-sm text-[#202E1D]/80 leading-relaxed font-sans">
                 {result.cultural_overview || result.analysisSummary || data.summary}
               </CardDescription>
             </CardHeader>
             {data.metadata?.disclosure && (
-              <div className="px-5 pb-4 text-[11px] text-amber-400/80 font-medium">
+              <div className="px-6 pb-4 text-[11px] text-[#8F9A82] font-mono">
                 Disclosure: {data.metadata.disclosure}
               </div>
             )}
           </Card>
 
           {/* Section: Cultural Concept Tags */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+          <div className="space-y-3 text-left">
+            <h3 className="font-serif text-lg font-normal text-[#202E1D] flex items-center gap-2">
               <span>Defining Cultural Concept Tags</span>
               <Badge variant="neutral" size="sm">
                 {definingTags.length > 0 ? definingTags.length : liveTags.length} tags
@@ -495,39 +408,37 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {/* Demo Mode Concept Tags */}
               {definingTags.map((tag, idx) => (
                 <div
                   key={tag.urn || idx}
-                  className="p-3.5 rounded-xl border border-zinc-800/80 bg-zinc-900/40 space-y-1 text-left"
+                  className="p-4 rounded-2xl border border-[#202E1D]/12 bg-white space-y-1 text-left shadow-2xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-zinc-200 truncate">{tag.label}</span>
+                    <span className="font-serif text-sm font-semibold text-[#202E1D] truncate">{tag.label}</span>
                     <Badge variant="info" size="sm">
                       {tag.prevalence}
                     </Badge>
                   </div>
-                  <p className="text-[10px] font-mono text-zinc-400 truncate">{tag.urn}</p>
+                  <p className="text-[10px] font-mono text-[#8F9A82] truncate">{tag.urn}</p>
                 </div>
               ))}
 
-              {/* Live Mode Resolved Tags */}
               {liveTags.map((tag, idx) => (
                 <div
                   key={tag.urn || tag.id || idx}
-                  className="p-3.5 rounded-xl border border-zinc-800/80 bg-zinc-900/40 space-y-1 text-left"
+                  className="p-4 rounded-2xl border border-[#202E1D]/12 bg-white space-y-1 text-left shadow-2xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-zinc-200 truncate">
+                    <span className="font-serif text-sm font-semibold text-[#202E1D] truncate">
                       {String(tag.name || tag.label || "Cultural Concept")}
                     </span>
                     {typeof tag.score === "number" && (
-                      <span className="text-[10px] font-mono text-indigo-400">
+                      <span className="text-[10px] font-mono text-[#8F9A82] font-bold">
                         score: {tag.score.toFixed(2)}
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] font-mono text-zinc-400 truncate">
+                  <p className="text-[10px] font-mono text-[#8F9A82] truncate">
                     {String(tag.urn || tag.tag_id || tag.id || "")}
                   </p>
                 </div>
@@ -536,9 +447,9 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
           </div>
 
           {/* Section: Cultural Peer Anchors / Recommended Places */}
-          <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-              <span>Cultural Peer Anchors & Recommended Places</span>
+          <div className="space-y-3 text-left">
+            <h3 className="font-serif text-lg font-normal text-[#202E1D] flex items-center gap-2">
+              <span>Cultural Peer Anchors &amp; Recommended Places</span>
               <Badge variant="neutral" size="sm">
                 {places.length} places identified
               </Badge>
@@ -546,36 +457,36 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {places.map((place, idx) => (
-                <Card key={place.id || idx} className="border-zinc-800/80 bg-zinc-900/40 text-left">
+                <Card key={place.id || idx}>
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <CardTitle className="text-base text-zinc-100">{place.name}</CardTitle>
-                        <p className="text-xs text-zinc-400 mt-0.5">
-                          {place.category} &bull; <span className="text-zinc-400">{String(place.neighborhood || place.address || place.location || city)}</span>
+                        <CardTitle className="text-base sm:text-lg">{place.name}</CardTitle>
+                        <p className="text-xs text-[#202E1D]/65 mt-0.5 font-sans">
+                          {place.category} &bull; <span className="text-[#8F9A82] font-mono">{String(place.neighborhood || place.address || place.location || city)}</span>
                         </p>
                       </div>
                       {typeof place.illustrative_affinity_score === "number" && (
                         <div className="shrink-0 text-right">
-                          <span className="text-xs font-bold text-emerald-400 font-mono">
+                          <span className="text-xs font-bold text-emerald-800 font-mono">
                             {place.illustrative_affinity_score}/100
                           </span>
-                          <p className="text-[9px] text-zinc-400 uppercase font-mono">Demo Index</p>
+                          <p className="text-[9px] text-[#8F9A82] uppercase font-mono">Demo Index</p>
                         </div>
                       )}
                       {typeof place.score === "number" && typeof place.illustrative_affinity_score !== "number" && (
                         <div className="shrink-0 text-right">
-                          <span className="text-xs font-bold text-indigo-400 font-mono">
+                          <span className="text-xs font-bold text-[#8F9A82] font-mono">
                             {place.score.toFixed(2)}
                           </span>
-                          <p className="text-[9px] text-zinc-400 uppercase font-mono">Qloo Score</p>
+                          <p className="text-[9px] text-[#8F9A82] uppercase font-mono">Qloo Score</p>
                         </div>
                       )}
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     {place.description && (
-                      <p className="text-xs text-zinc-300/90 leading-relaxed">
+                      <p className="text-xs text-[#202E1D]/80 leading-relaxed font-sans">
                         {place.description}
                       </p>
                     )}
@@ -586,7 +497,7 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
                         {place.vibe_keywords.map((kw, kIdx) => (
                           <span
                             key={kIdx}
-                            className="px-2 py-0.5 rounded text-[10px] bg-zinc-800/90 text-zinc-300 border border-zinc-700/40 font-medium"
+                            className="px-2.5 py-0.5 rounded-full text-[10px] bg-[#8F9A82]/15 text-[#202E1D] border border-[#8F9A82]/30 font-medium font-sans"
                           >
                             {kw}
                           </span>
@@ -599,7 +510,7 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
                         {place.tags.map((t, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-2 py-0.5 rounded text-[10px] bg-zinc-800/90 text-zinc-400 font-mono"
+                            className="px-2.5 py-0.5 rounded-full text-[10px] bg-white border border-[#202E1D]/15 text-[#202E1D]/75 font-mono"
                           >
                             {t}
                           </span>
@@ -614,11 +525,11 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
 
           {/* Section: Demographic Breakdown (if present in fixture or result) */}
           {result.demographic_breakdown && (
-            <Card className="border-zinc-800/80 bg-zinc-900/40 text-left">
+            <Card>
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <Badge variant="info" size="sm">Audience Profile</Badge>
-                  <CardTitle className="text-base">Target Demographic Indexing</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">Target Demographic Indexing</CardTitle>
                 </div>
                 <CardDescription>
                   Aggregate demographic segments and lifestyle overlap associated with this venue profile.
@@ -626,18 +537,18 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-3.5 rounded-lg bg-zinc-950/60 border border-zinc-800/60 space-y-1">
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase">Primary Age Bracket</span>
-                    <p className="text-sm font-semibold text-zinc-200">
+                  <div className="p-4 rounded-xl bg-white border border-[#202E1D]/12 space-y-1 shadow-2xs">
+                    <span className="text-[10px] font-mono text-[#8F9A82] uppercase font-semibold">Primary Age Bracket</span>
+                    <p className="text-sm font-semibold text-[#202E1D] font-serif">
                       {result.demographic_breakdown.primary_age_bracket}
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-lg bg-zinc-950/60 border border-zinc-800/60 space-y-1 sm:col-span-2">
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase">Primary Audience Segments</span>
+                  <div className="p-4 rounded-xl bg-white border border-[#202E1D]/12 space-y-1 sm:col-span-2 shadow-2xs">
+                    <span className="text-[10px] font-mono text-[#8F9A82] uppercase font-semibold">Primary Audience Segments</span>
                     <div className="flex flex-wrap gap-1.5 pt-0.5">
                       {result.demographic_breakdown.target_segments?.map((seg, sIdx) => (
-                        <span key={sIdx} className="px-2 py-0.5 rounded text-xs bg-zinc-800 text-zinc-300">
+                        <span key={sIdx} className="px-2.5 py-0.5 rounded-full text-xs bg-[#8F9A82]/15 text-[#202E1D] font-sans">
                           {seg}
                         </span>
                       ))}
@@ -647,14 +558,14 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
 
                 {Array.isArray(result.demographic_breakdown.lifestyle_interests) && (
                   <div className="space-y-1.5 pt-1">
-                    <span className="text-[11px] font-medium text-zinc-400 uppercase tracking-wider">
+                    <span className="text-[10px] font-mono uppercase text-[#8F9A82] tracking-wider block font-semibold">
                       Defining Lifestyle Affinities
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {result.demographic_breakdown.lifestyle_interests.map((item, iIdx) => (
                         <span
                           key={iIdx}
-                          className="px-2.5 py-1 rounded-md text-xs bg-zinc-800/70 border border-zinc-700/40 text-zinc-200"
+                          className="px-3 py-1 rounded-full text-xs bg-white border border-[#202E1D]/15 text-[#202E1D] shadow-2xs font-sans"
                         >
                           {item}
                         </span>
@@ -667,22 +578,22 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
           )}
 
           {/* Evidence, Provenance & Workflow Trace Strip */}
-          <div className="p-4 rounded-xl border border-zinc-800/60 bg-zinc-950/80 text-xs text-zinc-400 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl border border-[#202E1D]/12 bg-[#FCFBF7] text-xs text-[#202E1D]/75 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
             <div className="space-y-0.5 text-left">
-              <span className="text-zinc-300 font-medium">Qloo Tool Chaining Trace:</span>
-              <p className="text-[11px] font-mono text-zinc-400">
+              <span className="text-[#202E1D] font-serif font-semibold">Qloo Tool Chaining Trace:</span>
+              <p className="text-[11px] font-mono text-[#8F9A82]">
                 qloo_find_tags &rarr; qloo_recommend (place) &rarr; qloo_entity_tags
               </p>
             </div>
             <div className="flex items-center gap-3 text-[11px]">
-              <span className="font-mono text-zinc-400">
+              <span className="font-mono text-[#202E1D]/60">
                 Source: {data.metadata?.source || "qloo_mcp"}
               </span>
               <a
                 href="https://docs.qloo.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 underline font-medium"
+                className="text-[#202E1D] hover:underline font-medium font-sans"
               >
                 Qloo Docs Reference &rarr;
               </a>

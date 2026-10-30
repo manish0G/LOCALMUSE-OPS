@@ -57,5 +57,11 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Recommendations",
     href: "/recommendations",
     description: "Two-stage candidate discovery & tactical goal ranking"
+  },
+  {
+    id: "guide",
+    label: "Platform Guide",
+    href: "/guide",
+    description: "Operational manual, Qloo toolchains & responsible AI rules"
   }
 ];

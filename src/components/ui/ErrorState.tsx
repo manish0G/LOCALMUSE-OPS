@@ -22,12 +22,12 @@ export function ErrorState({
   return (
     <div
       className={cn(
-        "rounded-xl border border-red-500/20 bg-red-950/20 p-5 sm:p-6 text-left space-y-3",
+        "rounded-2xl border border-rose-200 bg-rose-50/70 p-5 sm:p-6 text-left space-y-3 text-[#202E1D]",
         className
       )}
     >
       <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 shrink-0 mt-0.5">
+        <div className="w-8 h-8 rounded-xl bg-rose-100 border border-rose-200 flex items-center justify-center text-rose-700 shrink-0 mt-0.5">
           <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
@@ -38,16 +38,16 @@ export function ErrorState({
         </div>
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <h4 className="text-sm font-semibold text-red-200">{title}</h4>
+            <h4 className="font-serif text-base font-semibold text-rose-950">{title}</h4>
             {code && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-red-900/40 text-red-300 border border-red-700/50">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-rose-100 text-rose-800 border border-rose-200 font-semibold">
                 {code}
               </span>
             )}
           </div>
-          <p className="text-xs sm:text-sm text-red-300/90 leading-relaxed">{message}</p>
+          <p className="text-xs sm:text-sm text-rose-900 leading-relaxed font-sans">{message}</p>
           {recovery && (
-            <p className="text-xs text-red-400/80 mt-1.5 font-medium">
+            <p className="text-xs text-rose-800/80 mt-1.5 font-medium font-sans">
               Recovery hint: {recovery}
             </p>
           )}
@@ -55,8 +55,8 @@ export function ErrorState({
       </div>
       {onRetry && (
         <div className="pt-2 flex justify-end">
-          <Button variant="danger" size="sm" onClick={onRetry}>
-            Retry Operation
+          <Button variant="primary" size="sm" onClick={onRetry}>
+            Retry Operation &rarr;
           </Button>
         </div>
       )}

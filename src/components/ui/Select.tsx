@@ -21,7 +21,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full space-y-1.5 text-left">
         {label && (
-          <label htmlFor={selectId} className="block text-xs font-medium text-zinc-300">
+          <label htmlFor={selectId} className="block text-[11px] font-mono uppercase tracking-wider text-[#202E1D]/80">
             {label}
           </label>
         )}
@@ -30,20 +30,20 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             id={selectId}
             ref={ref}
             className={cn(
-              "w-full rounded-lg bg-zinc-900/90 border border-zinc-800 px-3 py-2 pr-8 text-sm text-zinc-100 transition-colors focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 disabled:cursor-not-allowed disabled:opacity-50 appearance-none cursor-pointer",
-              error && "border-red-500/80 focus:border-red-500 focus:ring-red-500",
+              "w-full rounded-xl bg-white border border-[#202E1D]/20 px-3.5 py-2 pr-8 text-xs sm:text-sm text-[#202E1D] transition-colors focus:border-[#202E1D] focus:outline-none focus:ring-1 focus:ring-[#8F9A82] disabled:cursor-not-allowed disabled:opacity-50 appearance-none cursor-pointer shadow-2xs font-sans",
+              error && "border-rose-400 focus:border-rose-600 focus:ring-rose-200",
               className
             )}
             {...props}
           >
             {options.map((opt) => (
-              <option key={opt.value} value={opt.value} disabled={opt.disabled} className="bg-zinc-900 text-zinc-100">
+              <option key={opt.value} value={opt.value} disabled={opt.disabled} className="bg-[#FAF8F2] text-[#202E1D]">
                 {opt.label}
               </option>
             ))}
             {children}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-zinc-400">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#8F9A82]">
             <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
@@ -53,8 +53,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             </svg>
           </div>
         </div>
-        {error && <p className="text-xs text-red-400 mt-1">{error}</p>}
-        {helperText && !error && <p className="text-xs text-zinc-500 mt-1">{helperText}</p>}
+        {error && <p className="text-xs text-rose-700 mt-1">{error}</p>}
+        {helperText && !error && <p className="text-xs text-[#202E1D]/60 mt-1">{helperText}</p>}
       </div>
     );
   }

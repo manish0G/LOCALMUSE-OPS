@@ -12,10 +12,24 @@ import { AudienceComparisonView } from "@/components/audience-comparison/Audienc
 import { LocalTrendsView } from "@/components/local-trends/LocalTrendsView";
 import { CulturePlanView } from "@/components/culture-plan/CulturePlanView";
 import { RecommendationsView } from "@/components/recommendations/RecommendationsView";
+import { GuideView } from "@/components/guide/GuideView";
+import { TopNavbar } from "@/components/common/TopNavbar";
+import { useAuth } from "@/lib/AuthContext";
+import { TextRevealOnScroll } from "@/components/common/TextRevealOnScroll";
 
 export default function Home() {
   const [activeNav, setActiveNav] = useState("overview");
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState("all");
+  const { isAuthenticated, openLoginModal } = useAuth();
+
+  const handleNavSelect = (id: string) => {
+    const protectedIds = ["culture-plan", "location-insights", "compare-audiences", "local-trends", "recommendations"];
+    if (protectedIds.includes(id) && !isAuthenticated) {
+      openLoginModal();
+      return;
+    }
+    setActiveNav(id);
+  };
 
   const getShellTitle = () => {
     switch (activeNav) {
@@ -29,6 +43,8 @@ export default function Home() {
         return "Local Trends & Momentum";
       case "recommendations":
         return "Tactical Recommendations & Ranking";
+      case "guide":
+        return "Operator Manual & Field Guide";
       default:
         return "Cultural Intelligence Workbench";
     }
@@ -46,6 +62,8 @@ export default function Home() {
         return "Time-series popularity momentum curves and neighborhood density heatmaps";
       case "recommendations":
         return "Two-stage candidate discovery and ranking of operational initiatives against business goals";
+      case "guide":
+        return "Architecture reference, Qloo MCP protocol specification, and field operational guides";
       default:
         return "Taste-powered operations and local market intelligence for independent enterprises";
     }
@@ -54,7 +72,7 @@ export default function Home() {
   return (
     <AppShell
       activeNavId={activeNav}
-      onSelectNav={setActiveNav}
+      onSelectNav={handleNavSelect}
       title={getShellTitle()}
       description={getShellDescription()}
       className={activeNav === "overview" ? "p-0 sm:p-0 lg:p-0 bg-[#F6F4EB]" : undefined}
@@ -79,6 +97,13 @@ export default function Home() {
         <div className="p-4 sm:p-6 lg:p-8">
           <RecommendationsView />
         </div>
+      ) : activeNav === "guide" ? (
+        <div className="w-full text-[#202E1D] selection:bg-[#EDD88B] selection:text-[#202E1D]">
+          <TopNavbar activeScreen={activeNav} onNavigate={handleNavSelect} />
+          <div className="p-4 sm:p-6 lg:p-8">
+            <GuideView onLaunchLogin={openLoginModal} />
+          </div>
+        </div>
       ) : (
         /* IMMERSIVE ARTISANAL HOME PAGE (Inspired by Primal Pastures Color Palette & Editorial Typography) */
         <div className="w-full text-[#202E1D] selection:bg-[#EDD88B] selection:text-[#202E1D]">
@@ -86,72 +111,15 @@ export default function Home() {
           <div className="bg-[#8F9A82] text-white py-2 px-4 text-center text-xs font-medium tracking-wide flex items-center justify-center gap-2">
             <span>✨ Qloo Agentic Hackathon: Operational Cultural Intelligence for Independent Places</span>
             <button
-              onClick={() => setActiveNav("culture-plan")}
+              onClick={() => handleNavSelect("culture-plan")}
               className="underline font-semibold hover:text-[#EDD88B] transition-colors cursor-pointer"
             >
               Launch Weekly Copilot &rarr;
             </button>
           </div>
 
-          {/* Minimalist Sub-Header Navigation */}
-          <header className="border-b border-[#202E1D]/10 bg-[#F6F4EB]/90 backdrop-blur-xs sticky top-0 z-30 px-6 sm:px-12 py-4 flex items-center justify-between">
-            <div className="hidden lg:flex items-center gap-6 text-xs font-medium text-[#202E1D]/80">
-              <button
-                onClick={() => setActiveNav("culture-plan")}
-                className="hover:text-[#202E1D] transition-colors cursor-pointer"
-              >
-                Weekly Plan
-              </button>
-              <button
-                onClick={() => setActiveNav("location-insights")}
-                className="hover:text-[#202E1D] transition-colors cursor-pointer"
-              >
-                Location Insights
-              </button>
-              <button
-                onClick={() => setActiveNav("compare-audiences")}
-                className="hover:text-[#202E1D] transition-colors cursor-pointer"
-              >
-                Audience Contrast
-              </button>
-              <button
-                onClick={() => setActiveNav("local-trends")}
-                className="hover:text-[#202E1D] transition-colors cursor-pointer"
-              >
-                Local Trends
-              </button>
-              <button
-                onClick={() => setActiveNav("recommendations")}
-                className="hover:text-[#202E1D] transition-colors cursor-pointer"
-              >
-                Recommendations
-              </button>
-            </div>
-
-            {/* Centered Brand Mark */}
-            <div className="flex flex-col items-center cursor-pointer" onClick={() => setActiveNav("overview")}>
-              <h1 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-[#202E1D]">
-                LocalMuse <span className="font-serif italic">Ops</span>
-              </h1>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-[#8F9A82] font-medium -mt-0.5">
-                Taste &amp; Cultural Intelligence
-              </span>
-            </div>
-
-            {/* Right Action */}
-            <div className="flex items-center gap-3">
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#8F9A82]/15 text-[#202E1D] text-[11px] font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#8F9A82]" />
-                Demo Fixtures Active
-              </span>
-              <button
-                onClick={() => setActiveNav("culture-plan")}
-                className="px-4 py-2 rounded-full bg-[#EDD88B] hover:bg-[#E4CD7B] text-[#202E1D] text-xs font-semibold shadow-xs transition-all cursor-pointer"
-              >
-                Launch Copilot &rarr;
-              </button>
-            </div>
-          </header>
+          {/* Suraksha-Style Sticky Top Navigation */}
+          <TopNavbar activeScreen={activeNav} onNavigate={handleNavSelect} />
 
           {/* HERO SECTION (Artisanal Cream with Editorial Serif & Stamp Badges) */}
           <section className="relative px-6 sm:px-12 lg:px-20 py-16 sm:py-24 max-w-7xl mx-auto">
@@ -162,9 +130,11 @@ export default function Home() {
                   CULTURAL TASTE SIGNALS &bull; REAL NEIGHBORHOOD AFFINITIES &bull; ZERO AI SLOP
                 </div>
 
-                <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.08] font-normal tracking-tight text-[#202E1D]">
-                  The cultural operating system <span className="italic font-serif">for America&apos;s local places.</span>
-                </h2>
+                <TextRevealOnScroll
+                  as="h2"
+                  text="The cultural operating system for America's local places."
+                  className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.08] font-normal tracking-tight text-[#202E1D]"
+                />
 
                 <p className="text-sm sm:text-base text-[#202E1D]/80 leading-relaxed max-w-xl">
                   Independent cafés, natural wine bars, bakeries, and boutiques lose money guessing what their neighborhood wants. LocalMuse Ops translates macro cultural signals—music, dining, literature, and lifestyle affinities—into an actionable weekly operating rhythm grounded in verifiable Qloo taste data.
@@ -172,7 +142,7 @@ export default function Home() {
 
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <button
-                    onClick={() => setActiveNav("culture-plan")}
+                    onClick={() => handleNavSelect("culture-plan")}
                     className="px-6 py-3 rounded-full bg-[#EDD88B] hover:bg-[#E4CD7B] text-[#202E1D] text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-xs cursor-pointer inline-flex items-center gap-2"
                   >
                     <span>Generate Weekly Plan</span>
@@ -252,7 +222,7 @@ export default function Home() {
                   <div className="pt-2 flex items-center justify-between border-t border-[#202E1D]/10 text-[11px] text-[#202E1D]/70">
                     <span>Qloo Provenance Verified</span>
                     <button
-                      onClick={() => setActiveNav("culture-plan")}
+                      onClick={() => handleNavSelect("culture-plan")}
                       className="font-semibold text-[#202E1D] hover:underline"
                     >
                       View Full Culture Plan &rarr;
@@ -282,9 +252,13 @@ export default function Home() {
           {/* SOCIAL PROOF & STATS STRIP (Muted Sage Green Background like Screenshot 4 & 5) */}
           <section className="bg-[#9BA58C] text-[#202E1D] py-12 px-6 sm:px-12 border-y border-[#202E1D]/10">
             <div className="max-w-5xl mx-auto text-center space-y-6">
-              <h3 className="font-serif text-2xl sm:text-3xl font-normal tracking-tight">
-                Trusted by independent hospitality and retail operators across America
-              </h3>
+              <TextRevealOnScroll
+                as="h3"
+                text="Trusted by independent hospitality and retail operators across America"
+                className="font-serif text-2xl sm:text-3xl font-normal tracking-tight"
+                color="#202E1D"
+                mutedColor="rgba(32, 46, 29, 0.35)"
+              />
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-2">
                 <div className="space-y-1">
@@ -313,9 +287,11 @@ export default function Home() {
               <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#8F9A82]">
                 CORE WORKFLOW TAXONOMY
               </span>
-              <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#202E1D]">
-                Explore by Decision Module
-              </h3>
+              <TextRevealOnScroll
+                as="h3"
+                text="Explore by Decision Module"
+                className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#202E1D]"
+              />
               <p className="text-sm text-[#202E1D]/70 max-w-2xl mx-auto leading-relaxed">
                 Five high-impact operational tools bridging Qloo&apos;s cultural AI tools with small-business operational questions.
               </p>
@@ -368,7 +344,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setActiveNav("culture-plan")}
+                    onClick={() => handleNavSelect("culture-plan")}
                     className="w-full py-2.5 rounded-full bg-[#202E1D] hover:bg-[#172215] text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
                   >
                     Open Weekly Copilot &rarr;
@@ -397,7 +373,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setActiveNav("location-insights")}
+                    onClick={() => handleNavSelect("location-insights")}
                     className="w-full py-2.5 rounded-full bg-[#202E1D] hover:bg-[#172215] text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
                   >
                     Open Location Insights &rarr;
@@ -426,7 +402,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setActiveNav("compare-audiences")}
+                    onClick={() => handleNavSelect("compare-audiences")}
                     className="w-full py-2.5 rounded-full bg-[#202E1D] hover:bg-[#172215] text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
                   >
                     Open Audience Comparison &rarr;
@@ -455,7 +431,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setActiveNav("local-trends")}
+                    onClick={() => handleNavSelect("local-trends")}
                     className="w-full py-2.5 rounded-full bg-[#202E1D] hover:bg-[#172215] text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
                   >
                     Open Local Trends &rarr;
@@ -484,7 +460,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setActiveNav("recommendations")}
+                    onClick={() => handleNavSelect("recommendations")}
                     className="w-full py-2.5 rounded-full bg-[#202E1D] hover:bg-[#172215] text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
                   >
                     Open Recommendations &rarr;
@@ -501,9 +477,13 @@ export default function Home() {
                 <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#202E1D]/80">
                   HOW WE COMPARE
                 </span>
-                <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight">
-                  LocalMuse Ops <span className="font-serif italic">vs.</span> generic LLM advice
-                </h3>
+                <TextRevealOnScroll
+                  as="h3"
+                  text="LocalMuse Ops vs. generic LLM advice"
+                  className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight"
+                  color="#202E1D"
+                  mutedColor="rgba(32, 46, 29, 0.35)"
+                />
                 <p className="text-xs sm:text-sm text-[#202E1D]/85 max-w-2xl mx-auto leading-relaxed">
                   Two operational strategies, side by side. The one on the left was grounded in 4,000+ local Qloo cultural taste signals; the one on the right came out of a generic AI prompt.
                 </p>
@@ -586,9 +566,13 @@ export default function Home() {
 
               {/* Visual Benchmark Score Bars */}
               <div className="bg-[#FCFBF7] rounded-2xl p-6 sm:p-8 border border-[#202E1D]/15 space-y-4 shadow-xs">
-                <h4 className="font-serif text-xl text-[#202E1D] text-center">
-                  Comparative Performance Metrics
-                </h4>
+                <TextRevealOnScroll
+                  as="h4"
+                  text="Comparative Performance Metrics"
+                  className="font-serif text-xl text-[#202E1D] text-center"
+                  color="#202E1D"
+                  mutedColor="rgba(32, 46, 29, 0.35)"
+                />
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 pt-2">
                   {[
                     { label: "Cultural Specificity", qloo: 96, generic: 38 },
@@ -621,9 +605,11 @@ export default function Home() {
           {/* WHAT OPERATORS ARE SAYING (Testimonials Carousel Styled Exactly Like Screenshot 1) */}
           <section className="py-20 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto space-y-12">
             <div className="text-center space-y-2">
-              <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#202E1D]">
-                What customers are saying...
-              </h3>
+              <TextRevealOnScroll
+                as="h3"
+                text="What customers are saying..."
+                className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#202E1D]"
+              />
               <p className="text-xs text-[#202E1D]/70 font-mono">Verified Independent Operators</p>
             </div>
 
@@ -688,14 +674,17 @@ export default function Home() {
               </div>
 
               <div className="flex items-center gap-4 text-xs font-medium">
-                <button onClick={() => setActiveNav("culture-plan")} className="hover:underline">
+                <button onClick={() => handleNavSelect("culture-plan")} className="hover:underline">
                   Weekly Plan
                 </button>
-                <button onClick={() => setActiveNav("location-insights")} className="hover:underline">
+                <button onClick={() => handleNavSelect("location-insights")} className="hover:underline">
                   Location Insights
                 </button>
-                <button onClick={() => setActiveNav("recommendations")} className="hover:underline">
+                <button onClick={() => handleNavSelect("recommendations")} className="hover:underline">
                   Recommendations
+                </button>
+                <button onClick={() => handleNavSelect("guide")} className="hover:underline">
+                  Guide
                 </button>
                 <a
                   href="https://github.com/manish0G/LOCALMUSE-OPS"

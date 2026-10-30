@@ -178,7 +178,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
     error?.message?.includes("401");
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 pb-12">
+    <div className="max-w-6xl mx-auto space-y-8 pb-12 text-[#202E1D]">
       {/* View Header */}
       <SectionHeader
         badge={
@@ -194,15 +194,15 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
         title="Local Trends & Momentum"
         description="Track multi-quarter cultural momentum curves, emerging consumer shifts, and neighborhood-level affinity density."
         action={
-          <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 p-1 rounded-lg">
+          <div className="flex items-center gap-1.5 bg-[#FCFBF7] border border-[#202E1D]/12 p-1 rounded-lg">
             <button
               type="button"
               onClick={() => setMode("demo")}
               className={cn(
                 "px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer flex items-center gap-1.5",
                 mode === "demo"
-                  ? "bg-amber-500/20 text-amber-200 border border-amber-500/30 shadow-xs"
-                  : "text-zinc-400 hover:text-zinc-200"
+                  ? "bg-[#EDD88B] text-[#202E1D] border border-[#EDD88B]/60 shadow-xs"
+                  : "text-[#202E1D]/70 hover:text-[#202E1D]"
               )}
             >
               <span className={cn("w-1.5 h-1.5 rounded-full", mode === "demo" ? "bg-amber-400" : "bg-zinc-500")} />
@@ -214,8 +214,8 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
               className={cn(
                 "px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer flex items-center gap-1.5",
                 mode === "live"
-                  ? "bg-emerald-500/20 text-emerald-200 border border-emerald-500/30 shadow-xs"
-                  : "text-zinc-400 hover:text-zinc-200"
+                  ? "bg-emerald-600 text-emerald-950 border border-emerald-300 shadow-xs"
+                  : "text-[#202E1D]/70 hover:text-[#202E1D]"
               )}
             >
               <span
@@ -235,8 +235,8 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
         className={cn(
           "rounded-xl border p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left transition-colors",
           mode === "demo"
-            ? "border-amber-500/20 bg-amber-500/5 text-amber-200"
-            : "border-emerald-500/20 bg-emerald-500/5 text-emerald-200"
+            ? "border-[#EDD88B]/60 bg-[#EDD88B]/20 text-[#202E1D]"
+            : "border-emerald-200 bg-emerald-50 text-emerald-950"
         )}
       >
         <div className="flex items-start sm:items-center gap-3">
@@ -244,8 +244,8 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
             className={cn(
               "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 sm:mt-0",
               mode === "demo"
-                ? "bg-amber-500/10 text-amber-400 border border-amber-500/25"
-                : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                ? "bg-[#EDD88B]/30 text-[#202E1D] border border-[#EDD88B]/60"
+                : "bg-emerald-100 text-emerald-400 border border-emerald-200"
             )}
           >
             {mode === "demo" ? (
@@ -275,7 +275,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                 {mode === "demo" ? "Curated Trend Datasets" : isLiveAvailable ? "Qloo Connected" : "Requires Key"}
               </Badge>
             </div>
-            <p className="text-xs text-zinc-400 mt-0.5">
+            <p className="text-xs text-[#202E1D]/70 mt-0.5">
               {mode === "demo"
                 ? "Uses curated benchmark trend datasets (Austin café culture, South Delhi dining, Gurgaon lifestyle). Does not require an API key."
                 : "Executes live Qloo MCP pipeline (qloo_recommend entity discovery, qloo_trends time-series). Requires QLOO_API_KEY."}
@@ -288,7 +288,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
             variant="ghost"
             size="sm"
             onClick={() => setMode(mode === "demo" ? "live" : "demo")}
-            className="text-xs text-zinc-300 hover:text-zinc-100"
+            className="text-xs text-[#202E1D]/85 hover:text-[#202E1D]"
             type="button"
           >
             Switch to {mode === "demo" ? "Live Qloo Mode" : "Demo Mode"}
@@ -297,7 +297,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
       </div>
 
       {/* Input Parameters Form Card */}
-      <Card className="border-zinc-800/90 bg-zinc-900/60 text-left">
+      <Card className="border-[#202E1D]/12 bg-[#FCFBF7] text-left">
         <CardHeader>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
@@ -409,10 +409,10 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
             )}
 
             {/* Action Buttons Footer */}
-            <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-zinc-800/60 mt-4">
-              <div className="text-xs text-zinc-400">
+            <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#202E1D]/10 mt-4">
+              <div className="text-xs text-[#202E1D]/70">
                 {mode === "demo" ? (
-                  <span className="text-amber-400/90 flex items-center gap-1.5">
+                  <span className="text-[#202E1D]/90 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                     Querying curated local trend benchmark fixtures
                   </span>
@@ -466,9 +466,9 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
       {/* Dynamic Error & Auth Recovery States */}
       {error && !loading && (
         isAuthError ? (
-          <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-5 sm:p-6 text-left space-y-4">
+          <div className="rounded-xl border border-[#EDD88B]/60 bg-[#EDD88B]/20 p-5 sm:p-6 text-left space-y-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+              <div className="w-9 h-9 rounded-lg bg-[#EDD88B]/30 border border-[#EDD88B]/60 flex items-center justify-center text-[#202E1D] shrink-0 mt-0.5">
                 <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
                     fillRule="evenodd"
@@ -479,26 +479,26 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
               </div>
               <div className="space-y-1.5 flex-1">
                 <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-semibold text-amber-200">
+                  <h4 className="text-sm font-semibold text-[#202E1D]">
                     Authentication Required (QLOO_AUTH)
                   </h4>
                   <Badge variant="warning" size="sm">
                     HTTP 401
                   </Badge>
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                  Live Qloo queries require an event-issued API key. Configure <code className="text-amber-300 font-mono text-xs px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">QLOO_API_KEY</code> in <code className="text-amber-300 font-mono text-xs px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">server/.env</code>, or switch to Demo Mode to explore curated trend fixtures.
+                <p className="text-xs sm:text-sm text-[#202E1D]/85 leading-relaxed">
+                  Live Qloo queries require an event-issued API key. Configure <code className="text-[#202E1D] font-mono font-mono text-xs px-1.5 py-0.5 rounded bg-[#FCFBF7] border border-[#202E1D]/12">QLOO_API_KEY</code> in <code className="text-[#202E1D] font-mono font-mono text-xs px-1.5 py-0.5 rounded bg-[#FCFBF7] border border-[#202E1D]/12">server/.env</code>, or switch to Demo Mode to explore curated trend fixtures.
                 </p>
                 {error instanceof ApiClientError && error.message && (
-                  <p className="text-xs text-zinc-400 font-mono bg-zinc-950/60 p-2.5 rounded border border-zinc-800/80">
+                  <p className="text-xs text-[#202E1D]/70 font-mono bg-[#FAF8F2] p-2.5 rounded border border-[#202E1D]/12">
                     Backend detail: {error.message}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-zinc-800/60">
-              <span className="text-xs text-zinc-400">
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-[#202E1D]/10">
+              <span className="text-xs text-[#202E1D]/70">
                 Switch back to Demo Mode to test full trend analysis functionality with benchmark data.
               </span>
               <div className="flex items-center gap-2">
@@ -543,7 +543,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
         <div className="space-y-6">
           {/* Explicit Demo Disclaimer Banner */}
           {isDemoResponse && (
-            <div className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 text-xs text-amber-200 text-left">
+            <div className="rounded-xl border border-[#EDD88B]/60 bg-[#EDD88B]/30 px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 text-xs text-[#202E1D] text-left">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
                 <span className="font-medium">
@@ -557,12 +557,12 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
           )}
 
           {/* Section 1: Trend Overview Card */}
-          <Card className="border-zinc-800/90 bg-zinc-900/50 text-left">
+          <Card className="border-[#202E1D]/12 bg-[#FCFBF7] text-left">
             <CardHeader>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
+                    <span className="text-xs font-mono text-[#202E1D]/70 uppercase tracking-wider">
                       Cultural Momentum Analysis
                     </span>
                     {isDemoResponse ? (
@@ -575,20 +575,20 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-lg sm:text-xl font-bold">
+                  <CardTitle className="font-serif text-lg sm:text-xl font-normal">
                     {result.location || city} &bull; {result.category || effectiveCategory}
                   </CardTitle>
                 </div>
-                <div className="text-right text-xs text-zinc-400 font-mono">
-                  Range: <span className="text-zinc-200 font-semibold">{startDate} &rarr; {endDate}</span>
+                <div className="text-right text-xs text-[#202E1D]/70 font-mono">
+                  Range: <span className="text-[#202E1D] font-semibold">{startDate} &rarr; {endDate}</span>
                 </div>
               </div>
-              <CardDescription className="pt-2 text-sm text-zinc-300 leading-relaxed">
+              <CardDescription className="pt-2 text-sm text-[#202E1D]/85 leading-relaxed">
                 {data.summary}
               </CardDescription>
             </CardHeader>
             {data.metadata?.disclosure && (
-              <div className="px-5 pb-4 text-[11px] text-amber-400/80 font-medium">
+              <div className="px-5 pb-4 text-[11px] text-[#202E1D]/80 font-medium">
                 Disclosure: {data.metadata.disclosure}
               </div>
             )}
@@ -598,16 +598,16 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
           {timeline.length > 0 && (
             <div className="space-y-3 text-left">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-[#202E1D] uppercase tracking-wider flex items-center gap-2">
                   <span>Multi-Quarter Momentum Timeline</span>
                   <Badge variant="info" size="sm">{timeline.length} Quarters</Badge>
                 </h3>
-                <span className="text-[11px] font-mono text-zinc-400">
+                <span className="text-[11px] font-mono text-[#202E1D]/70">
                   Metric: Relative Cultural Index (0–100)
                 </span>
               </div>
 
-              <Card className="border-zinc-800/80 bg-zinc-900/40 p-4 sm:p-5">
+              <Card className="border-[#202E1D]/12 bg-[#FCFBF7] p-4 sm:p-5">
                 <div className="space-y-3.5">
                   {timeline.map((point, idx) => {
                     const score = point.illustrative_momentum_index ?? point.momentum_index ?? 0;
@@ -615,9 +615,9 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                       <div key={idx} className="space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
                           <div className="flex items-center gap-2">
-                            <span className="font-mono font-semibold text-zinc-200">{point.period}</span>
+                            <span className="font-mono font-semibold text-[#202E1D]">{point.period}</span>
                             {point.sample_volume_indicator && (
-                              <span className="text-[11px] text-zinc-400 truncate hidden sm:inline">
+                              <span className="text-[11px] text-[#202E1D]/70 truncate hidden sm:inline">
                                 &bull; {point.sample_volume_indicator}
                               </span>
                             )}
@@ -628,7 +628,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                         </div>
 
                         {/* Relative Momentum Visual Bar */}
-                        <div className="h-2 w-full rounded-full bg-zinc-800/80 overflow-hidden flex">
+                        <div className="h-2 w-full rounded-full bg-[#8F9A82]/15 overflow-hidden flex">
                           <div
                             className={cn(
                               "h-full rounded-full transition-all duration-500",
@@ -652,17 +652,17 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
           {/* Section 3: Emerging Cultural Shifts & Pioneering Spots */}
           {shifts.length > 0 && (
             <div className="space-y-3 text-left">
-              <h3 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-[#202E1D] uppercase tracking-wider flex items-center gap-2">
                 <span>Emerging Cultural Shifts & Pioneering Formats</span>
                 <Badge variant="success" size="sm">{shifts.length} Shifts Identified</Badge>
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {shifts.map((shift, idx) => (
-                  <Card key={idx} className="border-zinc-800/80 bg-zinc-900/40 text-left flex flex-col justify-between">
+                  <Card key={idx} className="border-[#202E1D]/12 bg-[#FCFBF7] text-left flex flex-col justify-between">
                     <CardHeader className="pb-2">
                       <div className="flex items-start justify-between gap-2">
-                        <CardTitle className="text-sm font-semibold text-zinc-100">
+                        <CardTitle className="text-sm font-semibold text-[#202E1D]">
                           {shift.shift_name}
                         </CardTitle>
                         {shift.momentum_growth && (
@@ -671,21 +671,21 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                           </span>
                         )}
                       </div>
-                      <CardDescription className="pt-1.5 text-xs text-zinc-300 leading-relaxed">
+                      <CardDescription className="pt-1.5 text-xs text-[#202E1D]/85 leading-relaxed">
                         {shift.description}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3 pt-2">
                       {Array.isArray(shift.pioneering_local_spots) && shift.pioneering_local_spots.length > 0 && (
                         <div className="space-y-1">
-                          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+                          <span className="text-[10px] font-mono text-[#202E1D]/70 uppercase tracking-wider">
                             Pioneering Local Anchors
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {shift.pioneering_local_spots.map((spot, sIdx) => (
                               <span
                                 key={sIdx}
-                                className="px-2 py-0.5 rounded text-[11px] bg-zinc-950/80 text-zinc-300 border border-zinc-800"
+                                className="px-2 py-0.5 rounded text-[11px] bg-[#FAF8F2] text-[#202E1D]/85 border border-[#202E1D]/12"
                               >
                                 {spot}
                               </span>
@@ -695,8 +695,8 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                       )}
 
                       {/* Operational Implication Interpretation Callout */}
-                      <div className="p-2.5 rounded-lg bg-zinc-950/50 border border-zinc-800/60 text-[11px] text-zinc-400 leading-relaxed">
-                        <span className="font-semibold text-zinc-300">Operational Implication: </span>
+                      <div className="p-2.5 rounded-lg bg-white/50 border border-[#202E1D]/10 text-[11px] text-[#202E1D]/70 leading-relaxed">
+                        <span className="font-semibold text-[#202E1D]/85">Operational Implication: </span>
                         Consider introducing seasonal offerings, cross-category collaborations, or evening formats aligned with this shift to capture early-adopter patronage before local saturation.
                       </div>
                     </CardContent>
@@ -709,7 +709,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
           {/* Section 4: Neighborhood Affinity Density Heatmaps */}
           {heatmaps.length > 0 && (
             <div className="space-y-3 text-left">
-              <h3 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-[#202E1D] uppercase tracking-wider flex items-center gap-2">
                 <span>Neighborhood Affinity Density</span>
                 <Badge variant="neutral" size="sm">{heatmaps.length} Clusters</Badge>
               </h3>
@@ -718,11 +718,11 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                 {heatmaps.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl border border-zinc-800/80 bg-zinc-900/40 text-left space-y-2 flex flex-col justify-between"
+                    className="p-4 rounded-xl border border-[#202E1D]/12 bg-[#FCFBF7] text-left space-y-2 flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-xs font-semibold text-zinc-100 truncate">
+                        <span className="text-xs font-semibold text-[#202E1D] truncate">
                           {item.neighborhood}
                         </span>
                         <Badge
@@ -739,12 +739,12 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                         </Badge>
                       </div>
                       {item.primary_patron_profile && (
-                        <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
+                        <p className="text-xs text-[#202E1D]/70 mt-2 leading-relaxed">
                           {item.primary_patron_profile}
                         </p>
                       )}
                     </div>
-                    <div className="text-[10px] font-mono text-zinc-500 pt-1 border-t border-zinc-800/50">
+                    <div className="text-[10px] font-mono text-[#8F9A82] pt-1 border-t border-[#202E1D]/12/50">
                       Geographic Micro-Cluster
                     </div>
                   </div>
@@ -755,10 +755,10 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
 
           {/* Section 5: Seed Entities Discovered by Qloo (if present in Live MCP mode) */}
           {Array.isArray(result.seedEntities) && result.seedEntities.length > 0 && (
-            <Card className="border-zinc-800/80 bg-zinc-900/40 text-left">
+            <Card className="border-[#202E1D]/12 bg-[#FCFBF7] text-left">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base text-zinc-100">Live Qloo Seed Entities</CardTitle>
+                  <CardTitle className="text-base text-[#202E1D]">Live Qloo Seed Entities</CardTitle>
                   <Badge variant="success" size="sm">{result.seedEntities.length} seeds</Badge>
                 </div>
                 <CardDescription>
@@ -770,7 +770,7 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
                   {result.seedEntities.map((entity, idx) => (
                     <span
                       key={idx}
-                      className="px-2.5 py-1 rounded-md text-xs bg-zinc-800 text-zinc-200 border border-zinc-700/50 font-mono"
+                      className="px-2.5 py-1 rounded-md text-xs bg-[#8F9A82]/15 text-[#202E1D] border border-[#202E1D]/15 font-mono"
                     >
                       {entity.name || entity.id || `Entity ${idx + 1}`}
                     </span>
@@ -781,22 +781,22 @@ export function LocalTrendsView({ initialMode }: LocalTrendsViewProps) {
           )}
 
           {/* Section 6: Evidence, Provenance & Workflow Trace Strip */}
-          <div className="p-4 rounded-xl border border-zinc-800/60 bg-zinc-950/80 text-xs text-zinc-400 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
+          <div className="p-4 rounded-xl border border-[#202E1D]/10 bg-[#FAF8F2] text-xs text-[#202E1D]/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
             <div className="space-y-0.5">
-              <span className="text-zinc-300 font-medium">Qloo Tool Chaining Trace:</span>
-              <p className="text-[11px] font-mono text-zinc-400">
+              <span className="text-[#202E1D]/85 font-medium">Qloo Tool Chaining Trace:</span>
+              <p className="text-[11px] font-mono text-[#202E1D]/70">
                 qloo_recommend (seed entities) &rarr; qloo_trends (time-series metrics)
               </p>
             </div>
             <div className="flex items-center gap-3 text-[11px]">
-              <span className="font-mono text-zinc-400">
+              <span className="font-mono text-[#202E1D]/70">
                 Source: {data.metadata?.source || "qloo_mcp"}
               </span>
               <a
                 href="https://docs.qloo.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 underline font-medium"
+                className="text-[#8F9A82] font-semibold hover:text-[#202E1D] underline font-medium"
               >
                 Qloo Docs Reference &rarr;
               </a>

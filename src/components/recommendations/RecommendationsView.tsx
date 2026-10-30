@@ -267,20 +267,20 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
   const getTypeBadgeColor = (type?: string) => {
     switch (type?.toLowerCase()) {
       case "programming":
-        return "bg-indigo-500/10 text-indigo-300 border-indigo-500/30";
+        return "bg-[#8F9A82]/20 text-[#202E1D] border-[#8F9A82]/30";
       case "partnership":
         return "bg-purple-500/10 text-purple-300 border-purple-500/30";
       case "product":
-        return "bg-emerald-500/10 text-emerald-300 border-emerald-500/30";
+        return "bg-emerald-100 text-emerald-300 border-emerald-300";
       case "atmosphere":
-        return "bg-amber-500/10 text-amber-300 border-amber-500/30";
+        return "bg-[#EDD88B]/30 text-[#202E1D] font-mono border-[#EDD88B]/60";
       default:
-        return "bg-zinc-800 text-zinc-300 border-zinc-700";
+        return "bg-[#8F9A82]/15 text-[#202E1D]/85 border-[#202E1D]/15";
     }
   };
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 pb-12">
+    <div className="max-w-6xl mx-auto space-y-8 pb-12 text-[#202E1D]">
       {/* View Header */}
       <SectionHeader
         badge={
@@ -296,15 +296,15 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
         title="Recommendations & Ranking"
         description="Two-stage candidate discovery and contextual ranking of tactical business initiatives against your specific operational goal."
         action={
-          <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 p-1 rounded-lg">
+          <div className="flex items-center gap-1.5 bg-[#FCFBF7] border border-[#202E1D]/12 p-1 rounded-lg">
             <button
               type="button"
               onClick={() => setMode("demo")}
               className={cn(
                 "px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer flex items-center gap-1.5",
                 mode === "demo"
-                  ? "bg-amber-500/20 text-amber-200 border border-amber-500/30 shadow-xs"
-                  : "text-zinc-400 hover:text-zinc-200"
+                  ? "bg-[#EDD88B] text-[#202E1D] border border-[#EDD88B]/60 shadow-xs"
+                  : "text-[#202E1D]/70 hover:text-[#202E1D]"
               )}
             >
               <span className={cn("w-1.5 h-1.5 rounded-full", mode === "demo" ? "bg-amber-400" : "bg-zinc-500")} />
@@ -316,8 +316,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
               className={cn(
                 "px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer flex items-center gap-1.5",
                 mode === "live"
-                  ? "bg-emerald-500/20 text-emerald-200 border border-emerald-500/30 shadow-xs"
-                  : "text-zinc-400 hover:text-zinc-200"
+                  ? "bg-emerald-600 text-emerald-950 border border-emerald-300 shadow-xs"
+                  : "text-[#202E1D]/70 hover:text-[#202E1D]"
               )}
             >
               <span
@@ -337,8 +337,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
         className={cn(
           "rounded-xl border p-4 sm:p-4.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left transition-colors",
           mode === "demo"
-            ? "border-amber-500/20 bg-amber-500/5 text-amber-200"
-            : "border-emerald-500/20 bg-emerald-500/5 text-emerald-200"
+            ? "border-[#EDD88B]/60 bg-[#EDD88B]/20 text-[#202E1D]"
+            : "border-emerald-200 bg-emerald-50 text-emerald-950"
         )}
       >
         <div className="flex items-start sm:items-center gap-3">
@@ -346,8 +346,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
             className={cn(
               "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 sm:mt-0",
               mode === "demo"
-                ? "bg-amber-500/10 text-amber-400 border border-amber-500/25"
-                : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                ? "bg-[#EDD88B]/30 text-[#202E1D] border border-[#EDD88B]/60"
+                : "bg-emerald-100 text-emerald-400 border border-emerald-200"
             )}
           >
             {mode === "demo" ? (
@@ -377,7 +377,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                 {mode === "demo" ? "Simulation" : "Authentic MCP Pipeline"}
               </Badge>
             </div>
-            <p className="text-xs text-zinc-400 mt-0.5">
+            <p className="text-xs text-[#202E1D]/70 mt-0.5">
               {mode === "demo"
                 ? "Generates curated operational opportunities with realistic implementation milestones and fit scores (e.g. Austin café weekday footfall pass, savoury lunch drops)."
                 : "Executes a live two-stage Qloo pipeline: qloo_recommend (candidate discovery) followed by qloo_rank (contextual prioritization against goal). Requires QLOO_API_KEY."}
@@ -386,8 +386,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
         </div>
 
         <div className="shrink-0 text-right">
-          <span className="text-[11px] font-mono text-zinc-400">
-            Pipeline: <code className="text-indigo-400">recommend &rarr; rank</code>
+          <span className="text-[11px] font-mono text-[#202E1D]/70">
+            Pipeline: <code className="text-[#8F9A82] font-semibold">recommend &rarr; rank</code>
           </span>
         </div>
       </div>
@@ -405,25 +405,25 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
 
             {/* Quick Presets */}
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] text-zinc-400 font-medium mr-1">Presets:</span>
+              <span className="text-[11px] text-[#202E1D]/70 font-medium mr-1">Presets:</span>
               <button
                 type="button"
                 onClick={handleLoadAustinPreset}
-                className="text-xs px-2.5 py-1 rounded-md bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 transition-colors cursor-pointer"
+                className="text-xs px-2.5 py-1 rounded-md bg-[#8F9A82]/15 hover:bg-zinc-700 text-[#202E1D] border border-[#202E1D]/15 transition-colors cursor-pointer"
               >
                 Austin Café (Footfall)
               </button>
               <button
                 type="button"
                 onClick={handleLoadDelhiPreset}
-                className="text-xs px-2.5 py-1 rounded-md bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 transition-colors cursor-pointer"
+                className="text-xs px-2.5 py-1 rounded-md bg-[#8F9A82]/15 hover:bg-zinc-700 text-[#202E1D] border border-[#202E1D]/15 transition-colors cursor-pointer"
               >
                 South Delhi Bistro
               </button>
               <button
                 type="button"
                 onClick={handleLoadGurgaonPreset}
-                className="text-xs px-2.5 py-1 rounded-md bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 transition-colors cursor-pointer"
+                className="text-xs px-2.5 py-1 rounded-md bg-[#8F9A82]/15 hover:bg-zinc-700 text-[#202E1D] border border-[#202E1D]/15 transition-colors cursor-pointer"
               >
                 Gurgaon Wellness
               </button>
@@ -541,10 +541,10 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
             )}
 
             {/* Action Buttons Footer */}
-            <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-zinc-800/60 mt-4">
-              <div className="text-xs text-zinc-400">
+            <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#202E1D]/10 mt-4">
+              <div className="text-xs text-[#202E1D]/70">
                 {mode === "demo" ? (
-                  <span className="text-amber-400/90 flex items-center gap-1.5">
+                  <span className="text-[#202E1D]/90 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                     Querying curated operational initiatives & fit scores
                   </span>
@@ -598,9 +598,9 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
       {/* Dynamic Error & Auth Recovery States */}
       {error && !loading && (
         isAuthError ? (
-          <div className="rounded-xl border border-amber-500/30 bg-amber-950/20 p-5 sm:p-6 text-left space-y-4">
+          <div className="rounded-xl border border-[#EDD88B]/60 bg-[#EDD88B]/20 p-5 sm:p-6 text-left space-y-4">
             <div className="flex items-start gap-3.5">
-              <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+              <div className="w-9 h-9 rounded-lg bg-[#EDD88B]/30 border border-[#EDD88B]/60 flex items-center justify-center text-[#202E1D] shrink-0 mt-0.5">
                 <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
                     fillRule="evenodd"
@@ -611,26 +611,26 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
               </div>
               <div className="space-y-1.5 flex-1">
                 <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-semibold text-amber-200">
+                  <h4 className="text-sm font-semibold text-[#202E1D]">
                     Authentication Required (QLOO_AUTH)
                   </h4>
                   <Badge variant="warning" size="sm">
                     HTTP 401
                   </Badge>
                 </div>
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                  Live Qloo recommendations require an event-issued API key. Configure <code className="text-amber-300 font-mono text-xs px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">QLOO_API_KEY</code> in <code className="text-amber-300 font-mono text-xs px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">server/.env</code>, or switch to Demo Mode to explore curated initiative fixtures.
+                <p className="text-xs sm:text-sm text-[#202E1D]/85 leading-relaxed">
+                  Live Qloo recommendations require an event-issued API key. Configure <code className="text-[#202E1D] font-mono font-mono text-xs px-1.5 py-0.5 rounded bg-[#FCFBF7] border border-[#202E1D]/12">QLOO_API_KEY</code> in <code className="text-[#202E1D] font-mono font-mono text-xs px-1.5 py-0.5 rounded bg-[#FCFBF7] border border-[#202E1D]/12">server/.env</code>, or switch to Demo Mode to explore curated initiative fixtures.
                 </p>
                 {error instanceof ApiClientError && error.message && (
-                  <p className="text-xs text-zinc-400 font-mono bg-zinc-950/60 p-2.5 rounded border border-zinc-800/80">
+                  <p className="text-xs text-[#202E1D]/70 font-mono bg-[#FAF8F2] p-2.5 rounded border border-[#202E1D]/12">
                     Backend detail: {error.message}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-zinc-800/60">
-              <span className="text-xs text-zinc-400">
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-[#202E1D]/10">
+              <span className="text-xs text-[#202E1D]/70">
                 Switch back to Demo Mode to test full tactical ranking functionality with benchmark data.
               </span>
               <div className="flex items-center gap-2">
@@ -685,7 +685,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
       {data && !loading && (
         <div className="space-y-6">
           {/* Strategy Overview Card */}
-          <Card className="border-indigo-500/20 bg-gradient-to-br from-zinc-900/90 via-zinc-900/50 to-zinc-950">
+          <Card className="border-[#8F9A82]/20 bg-gradient-to-br from-zinc-900/90 via-zinc-900/50 to-zinc-950">
             <CardHeader className="pb-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="space-y-1">
@@ -693,30 +693,30 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                     <Badge variant={isDemoResponse ? "warning" : "success"} size="sm">
                       {isDemoResponse ? "Demo Benchmark Results" : "Live Qloo MCP Results"}
                     </Badge>
-                    <span className="text-xs font-mono text-zinc-400">
+                    <span className="text-xs font-mono text-[#202E1D]/70">
                       {result?.business_name || result?.businessName || businessName}
                     </span>
                   </div>
                   <CardTitle className="text-xl sm:text-2xl pt-1">
                     Tactical Strategy & Opportunity Ranking
                   </CardTitle>
-                  <CardDescription className="text-zinc-300">
-                    Prioritized operational initiatives tailored for <strong className="text-zinc-100">{city}</strong> to achieve: &ldquo;{result?.strategic_goal || result?.goalObjective || effectiveGoal}&rdquo;
+                  <CardDescription className="text-[#202E1D]/85">
+                    Prioritized operational initiatives tailored for <strong className="text-[#202E1D]">{city}</strong> to achieve: &ldquo;{result?.strategic_goal || result?.goalObjective || effectiveGoal}&rdquo;
                   </CardDescription>
                 </div>
 
-                <div className="shrink-0 flex items-center gap-2 bg-zinc-950/70 p-2.5 rounded-xl border border-zinc-800">
-                  <div className="text-center px-3 border-r border-zinc-800">
-                    <div className="text-lg font-bold text-indigo-400 font-mono">
+                <div className="shrink-0 flex items-center gap-2 bg-[#FAF8F2] p-2.5 rounded-xl border border-[#202E1D]/12">
+                  <div className="text-center px-3 border-r border-[#202E1D]/12">
+                    <div className="text-lg font-bold text-[#8F9A82] font-semibold font-mono">
                       {rankedItems.length}
                     </div>
-                    <div className="text-[10px] text-zinc-400 uppercase tracking-wider">Ranked Options</div>
+                    <div className="text-[10px] text-[#202E1D]/70 uppercase tracking-wider">Ranked Options</div>
                   </div>
                   <div className="text-center px-3">
                     <div className="text-lg font-bold text-emerald-400 font-mono">
                       {rankedItems.filter((i) => i.operational_effort?.toLowerCase() === "low").length || "—"}
                     </div>
-                    <div className="text-[10px] text-zinc-400 uppercase tracking-wider">Low Effort</div>
+                    <div className="text-[10px] text-[#202E1D]/70 uppercase tracking-wider">Low Effort</div>
                   </div>
                 </div>
               </div>
@@ -725,16 +725,16 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
             {/* Strategic Rationale / Projected Impact Callout */}
             {(result?.projected_impact_summary || result?.strategyRationale) && (
               <CardContent className="pt-0">
-                <div className="rounded-xl border border-indigo-500/30 bg-indigo-950/15 p-4 sm:p-4.5 space-y-1.5 text-left">
+                <div className="rounded-xl border border-[#8F9A82]/30 bg-[#8F9A82]/20/15 p-4 sm:p-4.5 space-y-1.5 text-left">
                   <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-indigo-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="w-4 h-4 text-[#8F9A82] font-semibold shrink-0" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6z" />
                     </svg>
                     <span className="text-xs font-semibold text-indigo-200 uppercase tracking-wider">
                       {isDemoResponse ? "Projected Operational Impact Summary" : "Live Strategy Rationale"}
                     </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed pl-6">
+                  <p className="text-xs sm:text-sm text-[#202E1D]/85 leading-relaxed pl-6">
                     {result.projected_impact_summary || result.strategyRationale}
                   </p>
                 </div>
@@ -744,9 +744,9 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
 
           {/* Filtering & Ranking Controls */}
           {availableTypes.length > 0 && (
-            <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-zinc-900/50 border border-zinc-800/80">
+            <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[#FCFBF7] border border-[#202E1D]/12">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-zinc-400 font-medium">Filter by Type:</span>
+                <span className="text-xs text-[#202E1D]/70 font-medium">Filter by Type:</span>
                 <div className="flex flex-wrap gap-1.5">
                   <button
                     type="button"
@@ -755,7 +755,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                       "px-2.5 py-1 text-xs rounded-md transition-colors cursor-pointer",
                       typeFilter === "all"
                         ? "bg-indigo-600 text-white font-medium"
-                        : "bg-zinc-800 text-zinc-400 hover:text-zinc-200"
+                        : "bg-[#8F9A82]/15 text-[#202E1D]/70 hover:text-[#202E1D]"
                     )}
                   >
                     All ({rankedItems.length})
@@ -769,7 +769,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                         "px-2.5 py-1 text-xs rounded-md transition-colors cursor-pointer",
                         typeFilter.toLowerCase() === type.toLowerCase()
                           ? "bg-indigo-600 text-white font-medium"
-                          : "bg-zinc-800 text-zinc-400 hover:text-zinc-200"
+                          : "bg-[#8F9A82]/15 text-[#202E1D]/70 hover:text-[#202E1D]"
                       )}
                     >
                       {type} ({rankedItems.filter((i) => i.type?.toLowerCase() === type.toLowerCase()).length})
@@ -778,8 +778,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                 </div>
               </div>
 
-              <div className="text-xs text-zinc-400">
-                Sorted by <span className="text-zinc-300 font-mono">Qloo Relative Affinity Rank &darr;</span>
+              <div className="text-xs text-[#202E1D]/70">
+                Sorted by <span className="text-[#202E1D]/85 font-mono">Qloo Relative Affinity Rank &darr;</span>
               </div>
             </div>
           )}
@@ -798,8 +798,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                 <Card
                   key={item.id || `opportunity-${displayRank}`}
                   className={cn(
-                    "transition-all border-zinc-800/80 bg-zinc-900/60 hover:border-zinc-700/80",
-                    displayRank === 1 && "border-indigo-500/40 bg-zinc-900/80 ring-1 ring-indigo-500/20"
+                    "transition-all border-[#202E1D]/12 bg-[#FCFBF7] hover:border-[#202E1D]/15",
+                    displayRank === 1 && "border-indigo-500/40 bg-[#FCFBF7] ring-1 ring-indigo-500/20"
                   )}
                 >
                   <CardHeader className="pb-3">
@@ -812,8 +812,8 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                             displayRank === 1
                               ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
                               : displayRank === 2
-                              ? "bg-zinc-800 text-zinc-200 border border-zinc-700"
-                              : "bg-zinc-850 text-zinc-400 border border-zinc-800"
+                              ? "bg-[#8F9A82]/15 text-[#202E1D] border border-[#202E1D]/15"
+                              : "bg-zinc-850 text-[#202E1D]/70 border border-[#202E1D]/12"
                           )}
                         >
                           #{displayRank}
@@ -844,7 +844,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                             )}
                           </div>
 
-                          <h3 className="text-base sm:text-lg font-bold text-zinc-100">
+                          <h3 className="text-base sm:text-lg font-bold text-[#202E1D]">
                             {displayTitle}
                           </h3>
                         </div>
@@ -852,16 +852,16 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
 
                       {/* Score Indicator */}
                       {score !== undefined && (
-                        <div className="shrink-0 flex items-center gap-3 bg-zinc-950/70 p-2.5 rounded-xl border border-zinc-800/80 sm:self-start">
+                        <div className="shrink-0 flex items-center gap-3 bg-[#FAF8F2] p-2.5 rounded-xl border border-[#202E1D]/12 sm:self-start">
                           <div className="text-right">
-                            <div className="text-xs font-mono text-zinc-400">{scoreLabel}</div>
-                            <div className="text-base font-bold font-mono text-indigo-400">
+                            <div className="text-xs font-mono text-[#202E1D]/70">{scoreLabel}</div>
+                            <div className="text-base font-bold font-mono text-[#8F9A82] font-semibold">
                               {score}
-                              <span className="text-xs text-zinc-500 font-normal">/100</span>
+                              <span className="text-xs text-[#8F9A82] font-normal">/100</span>
                             </div>
                           </div>
                           {/* Mini Progress Bar */}
-                          <div className="w-16 h-2 bg-zinc-800 rounded-full overflow-hidden">
+                          <div className="w-16 h-2 bg-[#8F9A82]/15 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-indigo-500 rounded-full"
                               style={{ width: `${Math.min(100, Math.max(0, score))}%` }}
@@ -875,19 +875,19 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                   <CardContent className="space-y-4 pt-1">
                     {/* Target Segment Callout */}
                     {item.target_segment && (
-                      <div className="flex items-center gap-2 text-xs text-zinc-400 bg-zinc-950/40 px-3 py-1.5 rounded-lg border border-zinc-800/60">
-                        <span className="text-zinc-500 font-medium">Target Patron Segment:</span>
-                        <span className="text-zinc-200 font-medium">{item.target_segment}</span>
+                      <div className="flex items-center gap-2 text-xs text-[#202E1D]/70 bg-white/80 px-3 py-1.5 rounded-lg border border-[#202E1D]/10">
+                        <span className="text-[#8F9A82] font-medium">Target Patron Segment:</span>
+                        <span className="text-[#202E1D] font-medium">{item.target_segment}</span>
                       </div>
                     )}
 
                     {/* Strategic Rationale */}
                     {item.strategic_rationale && (
                       <div className="space-y-1">
-                        <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+                        <span className="text-xs font-semibold text-[#202E1D]/70 uppercase tracking-wider">
                           Strategic Rationale
                         </span>
-                        <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-[#202E1D]/85 leading-relaxed">
                           {item.strategic_rationale}
                         </p>
                       </div>
@@ -895,22 +895,22 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
 
                     {/* Implementation Milestones */}
                     {Array.isArray(item.implementation_milestones) && item.implementation_milestones.length > 0 && (
-                      <div className="space-y-2 pt-2 border-t border-zinc-800/60">
+                      <div className="space-y-2 pt-2 border-t border-[#202E1D]/10">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
+                          <span className="text-xs font-semibold text-[#202E1D]/70 uppercase tracking-wider">
                             Actionable Implementation Milestones
                           </span>
-                          <span className="text-[11px] font-mono text-zinc-500">
+                          <span className="text-[11px] font-mono text-[#8F9A82]">
                             {item.implementation_milestones.length} operational steps
                           </span>
                         </div>
-                        <ol className="space-y-2 text-xs text-zinc-300">
+                        <ol className="space-y-2 text-xs text-[#202E1D]/85">
                           {item.implementation_milestones.map((milestone, mIdx) => (
                             <li
                               key={`milestone-${mIdx}`}
-                              className="flex items-start gap-2.5 p-2 rounded-lg bg-zinc-950/40 border border-zinc-800/50"
+                              className="flex items-start gap-2.5 p-2 rounded-lg bg-white/80 border border-[#202E1D]/12/50"
                             >
-                              <span className="w-5 h-5 rounded-full bg-zinc-800 text-indigo-300 flex items-center justify-center font-mono text-[10px] shrink-0 mt-0.5">
+                              <span className="w-5 h-5 rounded-full bg-[#8F9A82]/15 text-[#202E1D] flex items-center justify-center font-mono text-[10px] shrink-0 mt-0.5">
                                 {mIdx + 1}
                               </span>
                               <span className="leading-relaxed flex-1">{milestone}</span>
@@ -927,13 +927,13 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
 
           {/* Live Stage 1 Candidate Pool Disclosure (when available) */}
           {Array.isArray(result?.candidateOptionsDiscovered) && result.candidateOptionsDiscovered.length > 0 && (
-            <Card className="border-zinc-800 bg-zinc-900/40">
+            <Card className="border-[#202E1D]/12 bg-[#FCFBF7]">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <Badge variant="neutral" size="sm">
                     Stage 1 Pipeline Output
                   </Badge>
-                  <span className="text-[11px] font-mono text-indigo-400">qloo_recommend</span>
+                  <span className="text-[11px] font-mono text-[#8F9A82] font-semibold">qloo_recommend</span>
                 </div>
                 <CardTitle className="text-base pt-1">
                   Candidate Discovery Pool ({result.candidateOptionsDiscovered.length} options evaluated)
@@ -947,7 +947,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
                   {result.candidateOptionsDiscovered.map((opt, idx) => (
                     <span
                       key={`candidate-${idx}`}
-                      className="px-2.5 py-1 text-xs rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-300 font-mono"
+                      className="px-2.5 py-1 text-xs rounded-lg bg-white border border-[#202E1D]/12 text-[#202E1D]/85 font-mono"
                     >
                       {opt}
                     </span>
@@ -958,17 +958,17 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
           )}
 
           {/* Two-Stage MCP Pipeline Provenance Strip */}
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
+          <div className="rounded-xl border border-[#202E1D]/12 bg-[#FCFBF7] p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-zinc-200">
+                <span className="text-xs font-semibold text-[#202E1D]">
                   Tool Chaining Provenance
                 </span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-indigo-300">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#8F9A82]/15 text-[#202E1D]">
                   qloo_recommend &rarr; qloo_rank
                 </span>
               </div>
-              <p className="text-xs text-zinc-400">
+              <p className="text-xs text-[#202E1D]/70">
                 {isDemoResponse
                   ? "Demonstration mode uses curated benchmark fixtures. Ranking scores illustrate algorithmic prioritization."
                   : "Live Mode executes two-stage MCP orchestration: candidate generation via taste vectors followed by multi-attribute scoring."}
@@ -976,7 +976,7 @@ export function RecommendationsView({ initialMode }: RecommendationsViewProps) {
             </div>
 
             <div className="shrink-0 flex items-center gap-2">
-              <span className="text-xs font-mono text-zinc-500">
+              <span className="text-xs font-mono text-[#8F9A82]">
                 {data.metadata?.timestamp
                   ? new Date(data.metadata.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
                   : "Live"}
