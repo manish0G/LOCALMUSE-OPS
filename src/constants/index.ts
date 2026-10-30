@@ -55,7 +55,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: "recommendations",
     label: "Recommendations",
-    href: "/#recommendations",
+    href: "/recommendations",
     description: "Two-stage candidate discovery & tactical goal ranking"
   }
 ];

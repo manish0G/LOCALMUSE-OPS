@@ -12,6 +12,7 @@ import { LocationInsightsView } from "@/components/location-insights/LocationIns
 import { AudienceComparisonView } from "@/components/audience-comparison/AudienceComparisonView";
 import { LocalTrendsView } from "@/components/local-trends/LocalTrendsView";
 import { CulturePlanView } from "@/components/culture-plan/CulturePlanView";
+import { RecommendationsView } from "@/components/recommendations/RecommendationsView";
 
 export default function Home() {
   const [activeNav, setActiveNav] = useState("overview");
@@ -26,6 +27,8 @@ export default function Home() {
         return "Audience Comparison";
       case "local-trends":
         return "Local Trends & Momentum";
+      case "recommendations":
+        return "Tactical Recommendations & Ranking";
       default:
         return "Cultural Intelligence Workbench";
     }
@@ -41,6 +44,8 @@ export default function Home() {
         return "Cross-market taste contrast, shared passions, and distinguishing lifestyle traits";
       case "local-trends":
         return "Time-series popularity momentum curves and neighborhood density heatmaps";
+      case "recommendations":
+        return "Two-stage candidate discovery and ranking of operational initiatives against business goals";
       default:
         return "Taste-powered operations and local market intelligence for independent enterprises";
     }
@@ -61,6 +66,8 @@ export default function Home() {
         <AudienceComparisonView />
       ) : activeNav === "local-trends" ? (
         <LocalTrendsView />
+      ) : activeNav === "recommendations" ? (
+        <RecommendationsView />
       ) : (
         <div className="max-w-6xl mx-auto space-y-8 pb-12">
           {/* Top Hero / Platform Introduction */}
@@ -267,12 +274,12 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              {/* Workflow 4: Recommendations & Rank */}
-              <Card className="hover:border-zinc-700/80 transition-colors">
+              {/* Workflow 4: Recommendations & Rank (Interactive & Live) */}
+              <Card className="hover:border-zinc-700/80 transition-colors border-indigo-500/30 bg-zinc-900/70">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <Badge variant="neutral" size="sm">Module 04</Badge>
-                    <span className="text-[11px] font-mono text-zinc-400">qloo_rank</span>
+                    <Badge variant="info" size="sm">Module 04 &bull; Active</Badge>
+                    <span className="text-[11px] font-mono text-indigo-400">qloo_rank</span>
                   </div>
                   <CardTitle className="pt-1">Tactical Recommendations</CardTitle>
                   <CardDescription>
@@ -289,6 +296,16 @@ export default function Home() {
                       recommend (candidate pool) &rarr; rank (shortlist vs goal profile)
                     </p>
                   </div>
+                  <div className="pt-1">
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      onClick={() => setActiveNav("recommendations")}
+                      className="w-full sm:w-auto"
+                    >
+                      Open Tactical Recommendations &rarr;
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -298,19 +315,21 @@ export default function Home() {
           <div className="rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-1">
               <span className="text-xs font-semibold text-zinc-200">
-                Workflow Module 01 (Location Insights) Active
+                All 4 Core Cultural Workflow Modules Active
               </span>
               <p className="text-xs text-zinc-400">
-                Ready for query execution in Demo and Live modes. Modules 02–04 will be mounted in Steps 8–10.
+                Location Insights, Audience Comparison, Local Trends & Tactical Recommendations are fully mounted in Demo and Live modes.
               </p>
             </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => setActiveNav("location-insights")}
-            >
-              Test Location Insights
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => setActiveNav("recommendations")}
+              >
+                Launch Module 04
+              </Button>
+            </div>
           </div>
         </div>
       )}
