@@ -147,7 +147,9 @@ export function AppHeader({
                             <div className="truncate font-serif font-semibold">{p.businessName}</div>
                             <div className="text-[10px] text-[#8F9A82] truncate font-mono">{p.roleTitle}</div>
                           </div>
-                          {isCurrent && <span className="text-[#8F9A82] font-bold text-xs">✓</span>}
+                          {isCurrent && (
+                            <svg className="w-3.5 h-3.5 text-[#8F9A82] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                          )}
                         </button>
                       );
                     })}

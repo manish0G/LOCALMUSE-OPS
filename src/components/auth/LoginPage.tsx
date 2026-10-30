@@ -84,9 +84,10 @@ export function LoginPage({ onLoginSuccess, onCancel }: LoginPageProps) {
               <button
                 type="button"
                 onClick={onCancel}
-                className="text-xs font-medium text-[#202E1D]/70 hover:text-[#202E1D] px-3 py-1.5 rounded-lg hover:bg-black/5 transition-colors cursor-pointer"
+                className="text-xs font-medium text-[#202E1D]/70 hover:text-[#202E1D] px-3 py-1.5 rounded-lg hover:bg-black/5 transition-colors cursor-pointer inline-flex items-center gap-1.5"
               >
-                ✕ Close
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span>Close</span>
               </button>
             )}
           </div>
@@ -98,7 +99,6 @@ export function LoginPage({ onLoginSuccess, onCancel }: LoginPageProps) {
           {/* Left Column: Persona Selector & Instructions */}
           <div className="lg:col-span-7 space-y-4 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#8F9A82]/30 bg-[#8F9A82]/10 text-[#202E1D] text-xs font-mono font-medium">
-              <span>✨</span>
               <span>Select an Operator Persona to Continue</span>
             </div>
 
@@ -136,8 +136,8 @@ export function LoginPage({ onLoginSuccess, onCancel }: LoginPageProps) {
                             {p.location}
                           </span>
                           {isSelected && (
-                            <span className="w-4 h-4 rounded-full bg-[#202E1D] text-white flex items-center justify-center text-[10px]">
-                              ✓
+                            <span className="w-4 h-4 rounded-full bg-[#202E1D] text-white flex items-center justify-center p-0.5">
+                              <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </span>
                           )}
                         </div>
@@ -187,7 +187,7 @@ export function LoginPage({ onLoginSuccess, onCancel }: LoginPageProps) {
 
               {loginError && (
                 <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2">
-                  <span>⚠</span>
+                  <svg className="w-4 h-4 text-rose-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   <span>{loginError}</span>
                 </div>
               )}

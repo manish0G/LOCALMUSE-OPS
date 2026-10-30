@@ -81,7 +81,7 @@ function AppShellInner({
             onLoginSuccess={(session) => {
               login(session.user);
             }}
-            onClose={closeLoginModal}
+            onCancel={closeLoginModal}
           />
         )}
       </div>

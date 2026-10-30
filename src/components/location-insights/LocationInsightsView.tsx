@@ -178,7 +178,11 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
                 : "bg-emerald-600 text-white"
             )}
           >
-            {mode === "demo" ? "✨" : "⚡"}
+            {mode === "demo" ? (
+              <svg className="w-4 h-4 text-[#202E1D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31M14 9.3V1.99M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+            ) : (
+              <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            )}
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -291,7 +295,7 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
             {/* Validation Message */}
             {validationError && (
               <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 flex items-center gap-2">
-                <span>⚠</span>
+                <svg className="w-4 h-4 text-rose-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 <span>{validationError}</span>
               </div>
             )}
@@ -349,7 +353,6 @@ export function LocationInsightsView({ initialMode }: LocationInsightsViewProps)
           {isDemoResponse && (
             <div className="rounded-2xl border border-[#EDD88B]/60 bg-[#EDD88B]/20 p-3.5 sm:p-4 text-xs text-[#202E1D] flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span>✨</span>
                 <span className="font-medium font-sans">
                   Curated Demo Mode: Showing illustrative results for product evaluation. Grounded in Austin Eastside coffee taste graph.
                 </span>

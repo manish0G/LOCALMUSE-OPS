@@ -109,7 +109,7 @@ export default function Home() {
         <div className="w-full text-[#202E1D] selection:bg-[#EDD88B] selection:text-[#202E1D]">
           {/* Top Announcement Banner */}
           <div className="bg-[#8F9A82] text-white py-2 px-4 text-center text-xs font-medium tracking-wide flex items-center justify-center gap-2">
-            <span>✨ Qloo Agentic Hackathon: Operational Cultural Intelligence for Independent Places</span>
+            <span>Qloo Agentic Framework: Operational Cultural Intelligence for Independent Places</span>
             <button
               onClick={() => handleNavSelect("culture-plan")}
               className="underline font-semibold hover:text-[#EDD88B] transition-colors cursor-pointer"
@@ -127,7 +127,7 @@ export default function Home() {
               {/* Left Column: Headline and Call-to-Actions */}
               <div className="lg:col-span-7 space-y-6">
                 <div className="text-[10px] sm:text-[11px] uppercase font-bold tracking-[0.2em] text-[#8F9A82]">
-                  CULTURAL TASTE SIGNALS &bull; REAL NEIGHBORHOOD AFFINITIES &bull; ZERO AI SLOP
+                  CULTURAL TASTE SIGNALS &bull; REAL NEIGHBORHOOD AFFINITIES &bull; EMPIRICAL GROUNDING
                 </div>
 
                 <TextRevealOnScroll
@@ -157,12 +157,21 @@ export default function Home() {
                   </a>
                 </div>
 
-                <div className="pt-4 flex items-center gap-4 text-xs text-[#202E1D]/60 font-serif italic">
-                  <span>✓ 100% Qloo Grounded</span>
+                <div className="pt-4 flex flex-wrap items-center gap-4 text-xs text-[#202E1D]/75 font-sans">
+                  <span className="flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5 text-[#8F9A82]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>100% Qloo Grounded</span>
+                  </span>
                   <span>&bull;</span>
-                  <span>✓ 4,200+ Neighborhood Taste Vectors</span>
+                  <span className="flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5 text-[#8F9A82]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>4,200+ Neighborhood Taste Vectors</span>
+                  </span>
                   <span>&bull;</span>
-                  <span>✓ Zero Capex Initiatives</span>
+                  <span className="flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5 text-[#8F9A82]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Zero Capex Initiatives</span>
+                  </span>
                 </div>
               </div>
 
@@ -230,15 +239,15 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Floating Stamp Badges (Inspired by the right-hand stamps in Screenshot 4) */}
+                {/* Trust Badges */}
                 <div className="hidden sm:flex flex-col gap-3 absolute -right-6 top-1/2 -translate-y-1/2">
                   <div className="w-16 h-16 rounded-full border-2 border-dashed border-[#8F9A82] bg-[#F6F4EB] flex flex-col items-center justify-center text-center p-1 shadow-sm rotate-6">
                     <span className="text-[8px] font-bold uppercase tracking-tighter text-[#202E1D]">100% QLOO</span>
                     <span className="text-[7px] text-[#8F9A82] font-serif italic">Grounded</span>
                   </div>
                   <div className="w-16 h-16 rounded-full border-2 border-[#202E1D]/30 bg-[#EDD88B] flex flex-col items-center justify-center text-center p-1 shadow-sm -rotate-6">
-                    <span className="text-[8px] font-bold uppercase tracking-tighter text-[#202E1D]">ZERO SLOP</span>
-                    <span className="text-[7px] text-[#202E1D]/80 font-mono">Verified</span>
+                    <span className="text-[8px] font-bold uppercase tracking-tighter text-[#202E1D]">VERIFIED</span>
+                    <span className="text-[7px] text-[#202E1D]/80 font-mono">Signals</span>
                   </div>
                   <div className="w-16 h-16 rounded-full border-2 border-[#8F9A82] bg-[#8F9A82] text-white flex flex-col items-center justify-center text-center p-1 shadow-sm rotate-3">
                     <span className="text-[8px] font-bold uppercase tracking-tighter">MCP STDIO</span>
@@ -249,7 +258,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* SOCIAL PROOF & STATS STRIP (Muted Sage Green Background like Screenshot 4 & 5) */}
+          {/* SOCIAL PROOF & STATS STRIP */}
           <section className="bg-[#9BA58C] text-[#202E1D] py-12 px-6 sm:px-12 border-y border-[#202E1D]/10">
             <div className="max-w-5xl mx-auto text-center space-y-6">
               <TextRevealOnScroll
@@ -262,7 +271,14 @@ export default function Home() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-2">
                 <div className="space-y-1">
-                  <div className="text-amber-900 font-bold text-lg sm:text-xl font-serif">★★★★★ 4.9/5</div>
+                  <div className="flex items-center justify-center gap-1.5 text-amber-900 font-serif">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <svg key={s} className="w-4 h-4 fill-amber-900 text-amber-900" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      ))}
+                    </div>
+                    <span className="text-base font-bold font-sans">4.9 / 5</span>
+                  </div>
                   <p className="text-xs text-[#202E1D]/80">Operator Satisfaction</p>
                 </div>
                 <div className="space-y-1">
@@ -281,7 +297,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* EXPLORE BY DECISION MODULE (Inspired by "Shop by Protein Type" in Screenshot 3 & "Best Sellers" in Screenshot 4) */}
+          {/* DECISION MODULES */}
           <section className="py-20 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto space-y-12">
             <div className="text-center space-y-3">
               <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#8F9A82]">
@@ -296,7 +312,7 @@ export default function Home() {
                 Five high-impact operational tools bridging Qloo&apos;s cultural AI tools with small-business operational questions.
               </p>
 
-              {/* Filter Pills like Screenshot 3 */}
+              {/* Filter Pills */}
               <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
                 {[
                   { id: "all", label: "All Modules" },
@@ -340,7 +356,7 @@ export default function Home() {
                       Synthesize an actionable 6-pillar operating rhythm: menu specials, vinyl soundscapes, destination events, consignment partnerships, merchandising, and social copy.
                     </p>
                     <div className="p-3 rounded-xl bg-[#F6F4EB] text-[11px] text-[#202E1D]/80 space-y-1">
-                      <strong>Killer Feature:</strong> Side-by-side comparison with generic LLM guesses, visual scorecards &amp; staff feedback memory.
+                      <strong>Core Capability:</strong> Side-by-side comparison with generic LLM guesses, visual scorecards &amp; staff feedback memory.
                     </div>
                   </div>
                   <button
@@ -470,7 +486,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* THE KILLER "HOW WE COMPARE" SPLIT SECTION (Styled exactly like Screenshot 1 & 2) */}
+          {/* COMPARATIVE OPERATIONAL STRATEGY */}
           <section id="comparison" className="bg-[#9BA58C] text-[#202E1D] py-20 px-6 sm:px-12 lg:px-20 border-y border-[#202E1D]/10">
             <div className="max-w-6xl mx-auto space-y-12">
               <div className="text-center space-y-3">
@@ -509,19 +525,19 @@ export default function Home() {
 
                   <ul className="space-y-3 text-xs text-[#202E1D]">
                     <li className="flex items-start gap-2.5">
-                      <span className="text-[#8F9A82] font-bold text-sm">✓</span>
+                      <span className="text-[#8F9A82] shrink-0 mt-0.5"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                       <span><strong>Single-Origin Cascara Tonic:</strong> Taps local <em>urn:tag:culinary:single_origin</em> (+31% YoY trend) during 1:30–4:30 PM post-lunch slump.</span>
                     </li>
                     <li className="flex items-start gap-2.5">
-                      <span className="text-[#8F9A82] font-bold text-sm">✓</span>
+                      <span className="text-[#8F9A82] shrink-0 mt-0.5"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                       <span><strong>Analog Vinyl Soundscape:</strong> Curates 85–95 BPM instrumental soul (Khruangbin, Bonobo) for neighborhood remote workers.</span>
                     </li>
                     <li className="flex items-start gap-2.5">
-                      <span className="text-[#8F9A82] font-bold text-sm">✓</span>
+                      <span className="text-[#8F9A82] shrink-0 mt-0.5"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                       <span><strong>Micro-Bakery Sourdough Drop:</strong> Consignment collaboration with nearby bakery with zero upfront equipment capex.</span>
                     </li>
                     <li className="flex items-start gap-2.5">
-                      <span className="text-[#8F9A82] font-bold text-sm">✓</span>
+                      <span className="text-[#8F9A82] shrink-0 mt-0.5"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                       <span><strong>Verifiable Provenance:</strong> Every suggestion cites exact concept URNs, peer anchors, and audience contrast deltas.</span>
                     </li>
                   </ul>
@@ -602,7 +618,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* WHAT OPERATORS ARE SAYING (Testimonials Carousel Styled Exactly Like Screenshot 1) */}
+          {/* OPERATOR TESTIMONIALS */}
           <section className="py-20 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto space-y-12">
             <div className="text-center space-y-2">
               <TextRevealOnScroll
@@ -643,11 +659,17 @@ export default function Home() {
                   <p className="text-xs text-[#202E1D]/80 leading-relaxed font-sans">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
-                  <div className="space-y-1 border-t border-[#202E1D]/10 pt-3">
-                    <div className="text-[#8F9A82] text-xs font-serif tracking-widest">★★★★★</div>
+                  <div className="space-y-1.5 border-t border-[#202E1D]/10 pt-3">
+                    <div className="flex items-center gap-0.5 text-[#8F9A82]">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <svg key={s} className="w-3 h-3 fill-[#8F9A82] text-[#8F9A82]" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      ))}
+                    </div>
                     <div className="flex items-center gap-1.5">
                       <span className="text-xs font-bold text-[#202E1D]">{testimonial.author}</span>
-                      <span className="w-3.5 h-3.5 rounded-full bg-[#8F9A82] text-white flex items-center justify-center text-[8px]">✓</span>
+                      <span className="w-3.5 h-3.5 rounded-full bg-[#8F9A82] text-white flex items-center justify-center p-0.5">
+                        <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
                     </div>
                     <div className="text-[10px] text-[#202E1D]/60" dangerouslySetInnerHTML={{ __html: testimonial.business }} />
                   </div>

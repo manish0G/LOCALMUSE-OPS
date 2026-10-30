@@ -403,18 +403,18 @@ ${planData.comparativeScores
 
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" onClick={handleCopyPlanMarkdown}>
-                {copiedPlan ? "✓ Copied Markdown" : "Export Plan (Markdown)"}
+                {copiedPlan ? "Copied Markdown" : "Export Plan (Markdown)"}
               </Button>
             </div>
           </div>
 
-          {/* THE KILLER FEATURE: Mode Toggle & Comparison Strip */}
+          {/* Mode Comparison: Qloo Cultural AI vs. Generic Baseline */}
           <div className="rounded-3xl border border-[#8F9A82]/30 bg-[#8F9A82]/15 p-6 space-y-5">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#202E1D]/10 pb-4">
               <div>
                 <div className="flex items-center gap-2">
                   <Badge variant="warning" size="sm">
-                    Hackathon Proof Point
+                    Empirical Benchmark
                   </Badge>
                   <span className="font-serif text-lg font-normal text-[#202E1D]">
                     Qloo Cultural AI vs. Generic LLM Baseline
@@ -742,7 +742,10 @@ ${planData.comparativeScores
                             : "bg-white text-[#202E1D] border-[#202E1D]/15 hover:bg-[#FAF8F2]"
                         )}
                       >
-                        {tag.label} {isSelected && "✓"}
+                        <span>{tag.label}</span>
+                        {isSelected && (
+                          <svg className="w-3 h-3 text-white ml-1 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        )}
                       </button>
                     );
                   })}
