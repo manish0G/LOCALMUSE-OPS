@@ -5,6 +5,7 @@ import { compareAudiencesRouter } from "./compare-audiences.js";
 import { localTrendsRouter } from "./local-trends.js";
 import { recommendationsRouter } from "./recommendations.js";
 import { planRouter } from "./plan.js";
+import { agentRouter } from "./agent.js";
 
 export const apiRouter = Router();
 
@@ -15,6 +16,7 @@ apiRouter.use("/compare-audiences", compareAudiencesRouter);
 apiRouter.use("/local-trends", localTrendsRouter);
 apiRouter.use("/recommendations", recommendationsRouter);
 apiRouter.use("/plan", planRouter);
+apiRouter.use("/agent", agentRouter);
 
 export {
   healthRouter,
@@ -22,5 +24,6 @@ export {
   compareAudiencesRouter,
   localTrendsRouter,
   recommendationsRouter,
-  planRouter
+  planRouter,
+  agentRouter
 };

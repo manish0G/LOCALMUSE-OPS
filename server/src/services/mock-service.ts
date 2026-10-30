@@ -1,9 +1,11 @@
 import type { QlooMcpEnvelope } from "../mcp/executor.js";
+import type { WeeklyCulturalPlanData } from "./qloo-types.js";
 import {
   MOCK_AUSTIN_COFFEE_INSIGHTS,
   MOCK_AUSTIN_VS_NASHVILLE_COMPARISON,
   MOCK_AUSTIN_COFFEE_TRENDS,
   MOCK_CAFE_WEEKDAY_FOOTFALL_RECOMMENDATIONS,
+  MOCK_WEEKLY_CULTURAL_OPERATIONS_PLAN_CAFE,
   type MockLocationInsightsData,
   type MockAudienceComparisonData,
   type MockLocalTrendsData,
@@ -398,5 +400,279 @@ export function getMockRecommendations(
     results: [adaptedFixture],
     result_count: 1,
     metadata: createDemoMetadata("adapted_recommendations")
+  };
+}
+
+/**
+ * 5. Coordinated Weekly Cultural Operations Plan Demo Service
+ *
+ * Simulates the full multi-stage agent orchestration flow, combining
+ * peer anchors, cross-market audience divergence, local trends, and tactical ranking.
+ */
+export function getMockWeeklyCulturalPlan(
+  businessProfile: {
+    name?: string;
+    category?: string;
+    city?: string;
+    neighborhood?: string;
+    vibeKeywords?: string[];
+    seedSignals?: string[];
+  } = {},
+  operationalGoal: {
+    objective?: string;
+    targetDemographic?: string;
+    benchmarkCity?: string;
+    targetWeek?: string;
+  } = {}
+): QlooMcpEnvelope<WeeklyCulturalPlanData> {
+  const profileName = (businessProfile.name || "Solstice Craft Coffee Lab").trim();
+  const profileCity = (businessProfile.city || "Austin, TX").trim();
+  const profileCat = (businessProfile.category || "Specialty Coffee & Modern Café").trim();
+  const objective = (operationalGoal.objective || "Increase weekday midday footfall & check size").trim();
+  const targetWeek = operationalGoal.targetWeek || "Upcoming Week (W45)";
+  const benchmarkCity = operationalGoal.benchmarkCity?.trim() || undefined;
+
+  if (!profileName || !profileCity) {
+    return {
+      status: "needs_input",
+      summary: "Business name and city are required to synthesize a weekly cultural operations plan.",
+      results: [],
+      result_count: 0,
+      metadata: createDemoMetadata("agent_weekly_plan_needs_input")
+    };
+  }
+
+  const isAustinCoffee =
+    profileCity.toLowerCase().includes("austin") ||
+    profileName.toLowerCase().includes("solstice") ||
+    profileName.toLowerCase().includes("coffee") ||
+    profileCat.toLowerCase().includes("coffee");
+
+  if (isAustinCoffee) {
+    // If user provided a custom benchmarkCity (or omitted), adjust divergence section accordingly
+    const plan = { ...MOCK_WEEKLY_CULTURAL_OPERATIONS_PLAN_CAFE };
+    plan.businessName = profileName;
+    plan.targetWeek = targetWeek;
+
+    if (!benchmarkCity) {
+      plan.audienceDivergence = undefined;
+    } else if (benchmarkCity.toLowerCase() !== "nashville, tn" && benchmarkCity.toLowerCase() !== "nashville") {
+      plan.audienceDivergence = {
+        benchmarkMarket: benchmarkCity,
+        sharedAffinities: ["Specialty Craft Quality", "Third-Place Dwell Dynamics"],
+        distinguishingLocalTraits: ["Hyper-Local Roaster Flights", "Analog Vinyl Soundscapes"],
+        divergenceTakeaway: `Austin patrons index higher in independent design and analog acoustics compared to the ${benchmarkCity} baseline.`,
+        status: "complete"
+      };
+    }
+
+    return {
+      status: "ok",
+      summary: `[Demo Mode] Coordinated weekly cultural operations plan synthesized for '${profileName}' in '${profileCity}'.`,
+      results: [plan],
+      result_count: 1,
+      metadata: createDemoMetadata("cafe_weekly_cultural_plan")
+    };
+  }
+
+  // Generalized adapted weekly plan fixture (e.g. South Delhi Bistro or Gurgaon Wellness)
+  const neighborhoodStr = businessProfile.neighborhood ? `${businessProfile.neighborhood}, ` : "";
+  const fullLocality = `${neighborhoodStr}${profileCity}`;
+
+  const adaptedPlan: WeeklyCulturalPlanData = {
+    businessName: profileName,
+    locality: fullLocality,
+    targetWeek,
+    executiveStrategy: `Synthesizes local cultural anchors in ${profileCity}, high-affinity lifestyle concepts, and emerging patron trends to achieve: "${objective}".`,
+    culturalAnchorSummary: `Grounded in local peer anchors across ${profileCity}, emphasizing verified craftsmanship and community-driven engagement.`,
+    targetPatronSegment:
+      operationalGoal.targetDemographic || "Urban professionals, creative freelancers, and specialty category patrons aged 22–40.",
+    specialsAndMenu: [
+      {
+        dayOfWeek: "Tuesday & Thursday (Off-Peak Hours)",
+        title: `Curated ${profileCat} Tasting Special`,
+        themeCategory: "Culinary Special",
+        description: `Signature tasting format highlighting artisanal ingredients paired with house beverages.`,
+        operationalNotes: "Prepped during morning lull; rapid 2-minute assembly for high-velocity service.",
+        origin: "agent_derived",
+        provenance: {
+          sourceTool: "qloo_trends",
+          groundingEntityOrTag: `Experiential & Artisanal Formats in ${profileCity}`,
+          empiricalMeasurement: "Growth trend in local peer benchmark",
+          interpretationNote: "Derives from local trend momentum toward interactive artisanal experiences.",
+          origin: "agent_derived"
+        }
+      },
+      {
+        dayOfWeek: "Friday Midday (12:00 PM – 2:30 PM)",
+        title: "Limited-Batch Artisan Collaboration Drop",
+        themeCategory: "Product",
+        description: "Seasonal limited-quantity offering co-developed with an adjacent local maker.",
+        operationalNotes: "Consignment delivery from partner maker; zero cooking or prep equipment required.",
+        origin: "agent_derived",
+        provenance: {
+          sourceTool: "qloo_rank",
+          groundingEntityOrTag: "Rank #1 Opportunity: Neighborhood Community Cross-Promotion",
+          empiricalMeasurement: "Fit Score: 93/100",
+          interpretationNote: "Leverages adjacent customer affinity to cross-pollinate midday foot traffic.",
+          origin: "agent_derived"
+        }
+      }
+    ],
+    eventsAndPartnerships: [
+      {
+        dayOfWeek: "Wednesday Afternoon (2:00 PM – 4:30 PM)",
+        title: "Off-Peak Experiential Skill Session & Dwell Lounge",
+        partnerType: "Local Creative or Wellness Studio",
+        targetAudience: "Skill-seekers, remote professionals & creative enthusiasts",
+        executionSteps: [
+          "Host bi-weekly educational or appreciation session capped at 15 attendees.",
+          "Offer bundle pricing including signature beverage and take-home merchandise.",
+          "Preserve separate area for standard walk-in patrons."
+        ],
+        origin: "agent_derived",
+        provenance: {
+          sourceTool: "qloo_rank",
+          groundingEntityOrTag: "Rank #2 Opportunity: Off-Peak Experiential Programming",
+          empiricalMeasurement: "Fit Score: 88/100",
+          interpretationNote: "Converts underutilized daytime floor capacity into dedicated revenue blocks.",
+          origin: "agent_derived"
+        }
+      }
+    ],
+    atmosphereAndPlaylist: {
+      musicalGenre: "Warm acoustic downtempo, ambient modern jazz, and melodic instrumental",
+      soundscapeVibe: "Low-decibel textural acoustics allowing conversation and focused work",
+      lightingAndDwellPacing: "Bright open daylight during daytime, transitioning to warm 2700K low lighting after 4:00 PM",
+      curatedArtistSignals: ["Leon Bridges", "Yussef Dayes", "Arlo Parks", "Tom Misch"],
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_entity_tags",
+        groundingEntityOrTag: "urn:tag:lifestyle:third_place & artisanal quality concepts",
+        empiricalMeasurement: "Dominant prevalence in category",
+        interpretationNote: "Calibrated to patron profile seeking calm third-place aesthetic.",
+        origin: "agent_derived"
+      }
+    },
+    socialContentCalendar: [
+      {
+        dayOfWeek: "Monday 11:00 AM",
+        hook: `Start the week with purpose: explore our curated ${profileCat} offerings in ${profileCity}.`,
+        contentAngle: "Behind-the-scenes preparation and craftsmanship overview.",
+        recommendedFormat: "Reel / Short Video",
+        origin: "agent_derived",
+        provenance: {
+          sourceTool: "qloo_rank",
+          groundingEntityOrTag: "Top Strategic Initiative",
+          empiricalMeasurement: "Fit Score: 93/100",
+          interpretationNote: "Early-week brand framing driving discovery.",
+          origin: "agent_derived"
+        }
+      },
+      {
+        dayOfWeek: "Thursday 1:30 PM",
+        hook: "Midday pause: seasonal drops and quiet corner tables open all afternoon.",
+        contentAngle: "Atmosphere dwell shot featuring cozy seating and tasting pairing.",
+        recommendedFormat: "Story / Carousel",
+        origin: "agent_derived",
+        provenance: {
+          sourceTool: "qloo_trends",
+          groundingEntityOrTag: "Local Afternoon Engagement Trend",
+          empiricalMeasurement: "Expansion Phase",
+          interpretationNote: "Captures afternoon off-peak footfall.",
+          origin: "agent_derived"
+        }
+      }
+    ],
+    dailySchedule: [
+      {
+        day: "Monday",
+        shiftFocus: "Weekly Strategy Alignment & Ingredient Prep",
+        keyMilestones: ["Align team on weekly tasting feature", "Prepare social content story"],
+        targetOutcome: "Smooth launch of weekly operational rhythm",
+        origin: "agent_derived"
+      },
+      {
+        day: "Tuesday",
+        shiftFocus: "Off-Peak Tasting Special Activation",
+        keyMilestones: ["Launch signature tasting format", "Collect early patron feedback"],
+        targetOutcome: "Increase afternoon check size",
+        origin: "agent_derived"
+      },
+      {
+        day: "Wednesday",
+        shiftFocus: "Experiential Mini-Session & Midday Dwell",
+        keyMilestones: ["Host afternoon workshop / demo session", "Engage local community partners"],
+        targetOutcome: "Convert floor space to structured revenue",
+        origin: "agent_derived"
+      },
+      {
+        day: "Thursday",
+        shiftFocus: "Acoustic Atmosphere & Evening Transition",
+        keyMilestones: ["Switch lighting and soundscape to warm ambient profile", "Highlight weekend drop preview"],
+        targetOutcome: "Extend dwell time past 4:00 PM",
+        origin: "agent_derived"
+      },
+      {
+        day: "Friday",
+        shiftFocus: "Limited Artisan Collaboration Drop",
+        keyMilestones: ["Receive partner maker delivery", "Promote lunch combo to nearby offices/studios"],
+        targetOutcome: "Peak Friday revenue velocity",
+        origin: "agent_derived"
+      },
+      {
+        day: "Saturday",
+        shiftFocus: "High-Volume Community Social Hub",
+        keyMilestones: ["Full team deployment", "Seamless service and queue pacing"],
+        targetOutcome: "Maximize weekend patron satisfaction",
+        origin: "agent_derived"
+      },
+      {
+        day: "Sunday",
+        shiftFocus: "Slow Social Sunday & Weekly Reconciliation",
+        keyMilestones: ["Relaxed service pace", "Review weekly metrics against objective"],
+        targetOutcome: "Evaluate week's revenue impact and restock",
+        origin: "agent_derived"
+      }
+    ],
+    expectedImpact: {
+      projectedOutcomeSummary: `Implementing this operations plan is estimated to increase off-peak dwell time by 20–30% and raise average ticket size by 15–20% based on illustrative peer benchmark models. Note: These figures are illustrative model projections rather than guaranteed commercial returns.`,
+      supportingDataPoints: [
+        {
+          metricName: "Top Initiative Fit Score",
+          value: "93/100",
+          source: "qloo_rank benchmark fixture"
+        },
+        {
+          metricName: "Category Momentum",
+          value: "Expansion",
+          source: "qloo_trends benchmark fixture"
+        }
+      ],
+      dataSupported: false
+    },
+    audienceDivergence: benchmarkCity
+      ? {
+          benchmarkMarket: benchmarkCity,
+          sharedAffinities: ["Craft Orientation", "Community Third Place"],
+          distinguishingLocalTraits: [`${profileCity} Specific Lifestyle Density`],
+          divergenceTakeaway: `${profileCity} demonstrates distinct hyper-local affinity patterns compared to ${benchmarkCity}.`,
+          status: "complete"
+        }
+      : undefined,
+    orchestrationTrace: {
+      toolsExecuted: ["qloo_recommend", "qloo_entity_tags", "qloo_trends", "qloo_rank"],
+      stagesCompleted: benchmarkCity ? 4 : 3,
+      timestamp: new Date().toISOString(),
+      isDemo: true
+    }
+  };
+
+  return {
+    status: "ok",
+    summary: `[Demo Mode] Coordinated weekly cultural operations plan synthesized for '${profileName}' in '${profileCity}'.`,
+    results: [adaptedPlan],
+    result_count: 1,
+    metadata: createDemoMetadata("adapted_weekly_cultural_plan")
   };
 }

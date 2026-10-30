@@ -165,3 +165,129 @@ export interface RecommendAndRankResult {
   rankedShortlist: RankedOptionRecord[];
   strategyRationale: string;
 }
+
+// ---------------------------------------------------------------------------
+// 5. Agent Orchestration & Weekly Cultural Plan Types
+// ---------------------------------------------------------------------------
+
+export type RecommendationOrigin = "qloo_evidence" | "agent_derived";
+
+export interface QlooProvenanceLink {
+  sourceTool:
+    | "qloo_recommend"
+    | "qloo_entity_tags"
+    | "qloo_compare_audiences"
+    | "qloo_trends"
+    | "qloo_rank"
+    | "curated_mock_fixture"
+    | "none";
+  groundingEntityOrTag: string;
+  empiricalMeasurement?: string;
+  interpretationNote?: string;
+  origin: RecommendationOrigin;
+}
+
+export interface PlanMenuItemSpecial {
+  dayOfWeek: string;
+  title: string;
+  themeCategory: "Product" | "Culinary Special" | "Botanical Beverage" | string;
+  description: string;
+  operationalNotes: string;
+  origin: RecommendationOrigin;
+  provenance: QlooProvenanceLink;
+}
+
+export interface PlanEventOrPartnership {
+  dayOfWeek: string;
+  title: string;
+  partnerType: string;
+  targetAudience: string;
+  executionSteps: string[];
+  origin: RecommendationOrigin;
+  provenance: QlooProvenanceLink;
+}
+
+export interface PlanAtmosphereDirection {
+  musicalGenre: string;
+  soundscapeVibe: string;
+  lightingAndDwellPacing: string;
+  curatedArtistSignals: string[];
+  origin: RecommendationOrigin;
+  provenance: QlooProvenanceLink;
+}
+
+export interface PlanSocialPostAngle {
+  dayOfWeek: string;
+  hook: string;
+  contentAngle: string;
+  recommendedFormat: "Reel / Short Video" | "Story" | "Carousel" | string;
+  origin: RecommendationOrigin;
+  provenance: QlooProvenanceLink;
+}
+
+export interface PlanDailyScheduleSlot {
+  day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+  shiftFocus: string;
+  keyMilestones: string[];
+  targetOutcome: string;
+  origin: RecommendationOrigin;
+}
+
+export interface PlanExpectedImpact {
+  projectedOutcomeSummary: string;
+  supportingDataPoints: Array<{
+    metricName: string;
+    value: string;
+    source: string;
+  }>;
+  dataSupported: boolean;
+}
+
+export interface PlanAudienceDivergence {
+  benchmarkMarket: string;
+  sharedAffinities: string[];
+  distinguishingLocalTraits: string[];
+  divergenceTakeaway: string;
+  status: "complete" | "partial" | "skipped";
+}
+
+export interface WeeklyCulturalPlanData {
+  businessName: string;
+  locality: string;
+  targetWeek: string;
+  executiveStrategy: string;
+  culturalAnchorSummary: string;
+  targetPatronSegment: string;
+  specialsAndMenu: PlanMenuItemSpecial[];
+  eventsAndPartnerships: PlanEventOrPartnership[];
+  atmosphereAndPlaylist: PlanAtmosphereDirection;
+  socialContentCalendar: PlanSocialPostAngle[];
+  dailySchedule: PlanDailyScheduleSlot[];
+  expectedImpact: PlanExpectedImpact;
+  audienceDivergence?: PlanAudienceDivergence;
+  orchestrationTrace: {
+    toolsExecuted: string[];
+    stagesCompleted: number;
+    timestamp: string;
+    isDemo: boolean;
+  };
+  [key: string]: unknown;
+}
+
+export interface AgentWeeklyPlanRequest {
+  mode: "demo" | "live";
+  businessProfile: {
+    name: string;
+    category: string;
+    city: string;
+    neighborhood?: string;
+    vibeKeywords?: string[];
+    seedSignals?: string[];
+  };
+  operationalGoal: {
+    objective: string;
+    targetDemographic?: string;
+    benchmarkCity?: string;
+    targetWeek?: string;
+  };
+}

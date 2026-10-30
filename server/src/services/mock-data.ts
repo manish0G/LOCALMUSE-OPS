@@ -1,3 +1,5 @@
+import type { WeeklyCulturalPlanData } from "./qloo-types.js";
+
 /**
  * LocalMuse Ops - Curated Demo Datasets & Mock Fixtures
  *
@@ -428,4 +430,288 @@ export const MOCK_CAFE_WEEKDAY_FOOTFALL_RECOMMENDATIONS: MockRecommendationsData
   ],
   projected_impact_summary:
     "Implementing the top 2 ranked initiatives (Co-Working Pass + Midday Savoury Drop) provides an estimated 25–35% increase in weekday midday dwell time and raises average patron check size from $6.20 to $11.50 without disrupting peak morning coffee operations."
+};
+
+// ---------------------------------------------------------------------------
+// 5. SCENARIO 5: Coordinated Weekly Cultural Operations Plan (Agent Synthesis)
+// ---------------------------------------------------------------------------
+export const MOCK_WEEKLY_CULTURAL_OPERATIONS_PLAN_CAFE: WeeklyCulturalPlanData = {
+  businessName: "Solstice Craft Coffee Lab",
+  locality: "East Austin (78702), Austin, TX",
+  targetWeek: "Upcoming Week (W45)",
+  executiveStrategy:
+    "Synthesizes Austin East Side third-place culture, strong weekday creative worker affinity, and high-growth botanical beverage trends to expand dwell time and midday revenues without compromising specialty coffee credibility.",
+  culturalAnchorSummary:
+    "Grounded in peer anchor signals from Flat Track Coffee and Figure 8 Coffee Purveyors, highlighting artisan quality, community orientation, and analog music culture.",
+  targetPatronSegment:
+    "Remote knowledge workers, creative freelancers, and neighborhood design professionals aged 24–38.",
+  specialsAndMenu: [
+    {
+      dayOfWeek: "Tuesday & Thursday (2:00 PM – 4:00 PM)",
+      title: "Cascara Blood Orange Nitro Spritz",
+      themeCategory: "Botanical Beverage",
+      description:
+        "Refreshing low-caffeine sparkling beverage brewed from upcycled coffee-cherry cascara and cold-pressed citrus oil.",
+      operationalNotes:
+        "Pre-batched in chilled kegs for instantaneous tap pour; zero barista workflow slowdown during midday shifts.",
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_trends",
+        groundingEntityOrTag: "Experiential & Low-Impact Coffee Formats (+31% YoY Momentum)",
+        empiricalMeasurement: "+31% YoY momentum growth in Austin",
+        interpretationNote:
+          "Derived from local trend momentum toward refreshing afternoon coffee-leaf alternatives during off-peak hours.",
+        origin: "agent_derived"
+      }
+    },
+    {
+      dayOfWeek: "Daily Midday (11:30 AM – 2:00 PM)",
+      title: "Artisanal Sourdough & Whipped Ricotta Toast Drop",
+      themeCategory: "Culinary Special",
+      description:
+        "Locally baked seeded sourdough topped with lemon-whipped ricotta, olive oil, and house-infused chili crunch.",
+      operationalNotes:
+        "Sourced fresh daily from nearby micro-bakery partner; simple assembly requiring zero kitchen buildout or cooktop equipment.",
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_rank",
+        groundingEntityOrTag: "Rank #2 Opportunity (Score 91): Artisanal Sourdough Lunch Drop",
+        empiricalMeasurement: "Illustrative Fit Score: 91/100",
+        interpretationNote:
+          "Solves the lack of savoury midday food options that previously caused patron churn to fast-casual restaurants at lunch.",
+        origin: "agent_derived"
+      }
+    }
+  ],
+  eventsAndPartnerships: [
+    {
+      dayOfWeek: "Monday through Thursday (10:30 AM – 3:30 PM)",
+      title: "Focus & Flow Midday Co-Working Pass",
+      partnerType: "Neighborhood Remote Knowledge Workers & Freelance Designers",
+      targetAudience: "Independent consultants, remote software engineers, and writers",
+      executionSteps: [
+        "Designate 8 perimeter booths as quiet, laptop-friendly zones with dedicated power strips.",
+        "Offer a $14 bundled pass including unlimited batch brew refills, 1 artisan pastry, and high-speed Wi-Fi token.",
+        "Preserve central communal tables for non-laptop walk-in casual guests to protect third-place atmosphere."
+      ],
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_rank",
+        groundingEntityOrTag: "Rank #1 Opportunity (Score 95): Midday Co-Working Pass",
+        empiricalMeasurement: "Illustrative Fit Score: 95/100",
+        interpretationNote:
+          "Capitalizes on high third-place concept tag prevalence to monetize idle midday tables.",
+        origin: "agent_derived"
+      }
+    },
+    {
+      dayOfWeek: "Thursday Afternoon (2:00 PM – 5:00 PM)",
+      title: "Bi-Weekly Acoustic Lo-Fi & Ambient Vinyl Listening Sessions",
+      partnerType: "Local Independent Vinyl Record Shop (Breakaway Records)",
+      targetAudience: "Creative freelancers, audio enthusiasts & students",
+      executionSteps: [
+        "Spin curated analog vinyl albums at low volume (under 68 dB) on the espresso bar turntable setup.",
+        "Display a rotating 'Record of the Week' with partner record store branding and QR code to stream.",
+        "Host low-decibel artist listening previews without disrupting focused co-working guests."
+      ],
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_entity_tags",
+        groundingEntityOrTag: "urn:tag:lifestyle:analog_sound_culture & Austin music affinity",
+        empiricalMeasurement: "Prevalence: High in 78702",
+        interpretationNote:
+          "Translates Austin's distinctive music-listening lifestyle trait into subtle off-peak afternoon energy.",
+        origin: "agent_derived"
+      }
+    }
+  ],
+  atmosphereAndPlaylist: {
+    musicalGenre: "Low-tempo ambient jazz, Japanese city pop, and analog acoustic instrumental",
+    soundscapeVibe: "Warm, unhurried, low-decibel analog acoustics (under 68 dB) allowing focused screen work",
+    lightingAndDwellPacing:
+      "Natural daylight through 3:00 PM, transitioning to warm amber low-kelvin sconces at 4:00 PM for late-afternoon wind-down",
+    curatedArtistSignals: ["Khruangbin", "Hania Rani", "Makoto Matsushita", "BADBADNOTGOOD", "Yussef Dayes"],
+    origin: "agent_derived",
+    provenance: {
+      sourceTool: "qloo_compare_audiences",
+      groundingEntityOrTag: "Austin distinctive lifestyle trait: Independent Vinyl Culture & Ambient Audio",
+      empiricalMeasurement: "High divergence vs benchmark mainstream commercial radio",
+      interpretationNote:
+        "Directly matches creative remote worker preferences for textured acoustic background without vocal distraction.",
+      origin: "agent_derived"
+    }
+  },
+  socialContentCalendar: [
+    {
+      dayOfWeek: "Monday 10:30 AM",
+      hook: "Reclaim your midday flow: batch brew refills + dedicated power booths open all week.",
+      contentAngle: "Showcase ergonomic desk setup and peaceful natural lighting for remote workers.",
+      recommendedFormat: "Reel / Short Video",
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_rank",
+        groundingEntityOrTag: "Rank #1 Co-Working Initiative",
+        empiricalMeasurement: "Score: 95/100",
+        interpretationNote: "Drives Monday morning discovery for the upcoming work week.",
+        origin: "agent_derived"
+      }
+    },
+    {
+      dayOfWeek: "Wednesday 2:00 PM",
+      hook: "Midweek botanical recharge: Cascara Blood Orange Spritz is on tap today.",
+      contentAngle: "Slow-pour beauty shot highlighting sparkling effervescence and citrus garnish.",
+      recommendedFormat: "Story / Static Post",
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_trends",
+        groundingEntityOrTag: "Experiential & Low-Impact Coffee Formats",
+        empiricalMeasurement: "+31% YoY Momentum",
+        interpretationNote: "Targets Wednesday 2 PM slump when caffeine shifters seek refreshing alternatives.",
+        origin: "agent_derived"
+      }
+    },
+    {
+      dayOfWeek: "Friday 11:45 AM",
+      hook: "Weekend warm-up: Fresh sourdough focaccia drop just landed for lunch.",
+      contentAngle: "Close-up bread pull showcasing bubbly crumb and local micro-bakery partner tag.",
+      recommendedFormat: "Carousel / Story",
+      origin: "agent_derived",
+      provenance: {
+        sourceTool: "qloo_rank",
+        groundingEntityOrTag: "Rank #2 Sourdough Partnership Drop",
+        empiricalMeasurement: "Score: 91/100",
+        interpretationNote: "Encourages patrons to stay for lunch rather than leaving for external restaurants.",
+        origin: "agent_derived"
+      }
+    }
+  ],
+  dailySchedule: [
+    {
+      day: "Monday",
+      shiftFocus: "Focus & Flow Launch (10:30 AM – 3:30 PM)",
+      keyMilestones: [
+        "Open reserved perimeter booths for co-working pass holders.",
+        "Brew morning batch roast origin (Guatemala Huehuetenango).",
+        "Publish Monday social co-working story."
+      ],
+      targetOutcome: "Establish co-working routine with early-week remote workers.",
+      origin: "agent_derived"
+    },
+    {
+      day: "Tuesday",
+      shiftFocus: "Botanical Spritz Tap Activation (2:00 PM – 4:00 PM)",
+      keyMilestones: [
+        "Check nitrogen carbonation on Cascara Spritz keg line.",
+        "Offer complimentary 2 oz tasting pours to co-working patrons.",
+        "Log customer feedback on cascara sweetness profile."
+      ],
+      targetOutcome: "Drive afternoon check average lift during the 2–4 PM lull.",
+      origin: "agent_derived"
+    },
+    {
+      day: "Wednesday",
+      shiftFocus: "Midweek Roaster Tasting Flights (1:00 PM – 3:30 PM)",
+      keyMilestones: [
+        "Set out 3-cup flight cards with flavor wheels on the bar counter.",
+        "Rotate between washed Ethiopian and natural processed Costa Rican beans.",
+        "Promote retail whole-bean bag discount bundle with each flight."
+      ],
+      targetOutcome: "Engage coffee connoisseurs and generate whole-bean retail revenue.",
+      origin: "agent_derived"
+    },
+    {
+      day: "Thursday",
+      shiftFocus: "Analog Vinyl Afternoon Session (2:00 PM – 5:00 PM)",
+      keyMilestones: [
+        "Cue up ambient jazz & instrumental beats on bar turntable.",
+        "Feature Record of the Week card with partner micro-record shop.",
+        "Monitor sound level to maintain comfortable conversation under 68 dB."
+      ],
+      targetOutcome: "Create unique sensory dwell atmosphere that encourages extended visits.",
+      origin: "agent_derived"
+    },
+    {
+      day: "Friday",
+      shiftFocus: "Artisanal Sourdough Midday Drop (11:30 AM – 2:00 PM)",
+      keyMilestones: [
+        "Receive fresh morning delivery of savoury focaccia and sourdough bread.",
+        "Prep whipped herb ricotta and cold-pressed olive oil spreads.",
+        "Run lunch combo: Toast + Cold Brew or Iced Cascara."
+      ],
+      targetOutcome: "Capture lunch rush revenue without kitchen capital expenditures.",
+      origin: "agent_derived"
+    },
+    {
+      day: "Saturday",
+      shiftFocus: "Neighborhood Third-Place Social Hub (9:00 AM – 4:00 PM)",
+      keyMilestones: [
+        "Stow perimeter co-working signage to transition floor to communal social tables.",
+        "Feature dual single-origin pour-over bar.",
+        "Engage weekend neighborhood walk-ins and local patio patrons."
+      ],
+      targetOutcome: "Maximize morning turnover and weekend community connection.",
+      origin: "agent_derived"
+    },
+    {
+      day: "Sunday",
+      shiftFocus: "Slow Sunday Coffee & Cultural Reflection (10:00 AM – 3:00 PM)",
+      keyMilestones: [
+        "Spin low-tempo acoustic and bossa nova vinyl selections.",
+        "Review weekly sales figures across co-working passes, cascara spritzes, and lunch drops.",
+        "Plan ingredient orders and partner drops for upcoming Monday."
+      ],
+      targetOutcome: "Calm end-of-week community wind-down and operational reconciliation.",
+      origin: "agent_derived"
+    }
+  ],
+  expectedImpact: {
+    projectedOutcomeSummary:
+      "Implementing this weekly operations plan is estimated to increase midday dwell time by 25–35% and raise average customer ticket size from $6.20 to $11.50 during off-peak weekday hours. Note: These figures are illustrative model projections rather than guaranteed commercial returns.",
+    supportingDataPoints: [
+      {
+        metricName: "Austin Specialty Coffee Trend Growth",
+        value: "+31% YoY",
+        source: "qloo_trends benchmark fixture"
+      },
+      {
+        metricName: "Top Tactical Initiative Fit Score",
+        value: "95/100",
+        source: "qloo_rank benchmark fixture"
+      },
+      {
+        metricName: "Third-Place Concept Tag Prevalence",
+        value: "Dominant in 78702",
+        source: "qloo_entity_tags benchmark fixture"
+      }
+    ],
+    dataSupported: false
+  },
+  audienceDivergence: {
+    benchmarkMarket: "Nashville, TN",
+    sharedAffinities: [
+      "Specialty Pour-Over Culture",
+      "Artisan Bakery Sourcing",
+      "Third-Place Dwell Dynamics"
+    ],
+    distinguishingLocalTraits: [
+      "Hyper-Local Roaster Tasting Flights",
+      "Vinyl Soundscapes & Low-Decibel Audio",
+      "Botanical & Low-Impact Cascara Brews"
+    ],
+    divergenceTakeaway:
+      "While Nashville leans toward daytime Americana hospitality, Austin patrons strongly index toward independent design aesthetics, plant-forward ingredients, and analog acoustic spaces.",
+    status: "complete"
+  },
+  orchestrationTrace: {
+    toolsExecuted: [
+      "qloo_recommend",
+      "qloo_entity_tags",
+      "qloo_compare_audiences",
+      "qloo_trends",
+      "qloo_rank"
+    ],
+    stagesCompleted: 4,
+    timestamp: new Date().toISOString(),
+    isDemo: true
+  }
 };
